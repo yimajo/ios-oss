@@ -10,7 +10,7 @@ public let disclaimerButtonStyle = UIButton.lens.titleColor(for: .normal) .~ .ks
     UIColor.ksr_text_dark_grey_400.withAlphaComponent(0.5)
   }
   <> UIButton.lens.titleLabel.font %~~ { _, label in
-    label.traitCollection.isRegularRegular ? .ksr_footnote(size: 14.0) : .ksr_footnote(size: 11.0)
+    label.traitCollection.isRegularRegular ? .ksr_footnote(size: 14.0) : .ksr_footnote()
   }
   <> UIButton.lens.titleLabel.textAlignment .~ .center
   <> UIButton.lens.title(for: .normal) %~ { _ in
@@ -21,11 +21,19 @@ public let disclaimerButtonStyle = UIButton.lens.titleColor(for: .normal) .~ .ks
     Strings.login_tout_disclaimer_agree_to_terms()
     }
   <> UIButton.lens.accessibilityHint %~ { _ in Strings.Opens_help_sheet() }
+  <> UIButton.lens.titleLabel.numberOfLines .~ 3
 
 public let fbDisclaimerTextStyle = UIButton.lens.title(for: .normal) %~ { _ in
     Strings.Facebook_login_disclaimer()
   } <> UIButton.lens.accessibilityLabel %~ { _ in
     Strings.Facebook_login_disclaimer()
+  }
+
+public let readMoreButtonStyle = UIButton.lens.title(for: .normal) .~ "Read more"
+  <> UIButton.lens.titleColor(for: .highlighted) %~ { _ in
+    UIColor.ksr_text_dark_grey_400.withAlphaComponent(0.5)
+  } <> UIButton.lens.titleLabel.font %~~ { _, label in
+    label.traitCollection.isRegularRegular ? .ksr_footnote(size: 14.0) : .ksr_footnote(size: 11.0)
   }
 
 public let emailFieldStyle = formFieldStyle

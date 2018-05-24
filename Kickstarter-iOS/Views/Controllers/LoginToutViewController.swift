@@ -16,7 +16,10 @@ internal final class LoginToutViewController: UIViewController, MFMailComposeVie
   @IBOutlet fileprivate weak var signupButton: UIButton!
   @IBOutlet fileprivate weak var loginContextStackView: UIStackView!
   @IBOutlet fileprivate weak var rootStackView: UIStackView!
-
+  @IBOutlet fileprivate weak var readMoreButton: UIButton!
+  fileprivate var disclaimerHeightConstraint: NSLayoutConstraint!
+  fileprivate var disclaimerHeightConstraintExpanded: NSLayoutConstraint!
+  
   fileprivate let helpViewModel = HelpViewModel()
   private var sessionStartedObserver: Any?
   fileprivate let viewModel: LoginToutViewModelType = LoginToutViewModel()
@@ -40,6 +43,22 @@ internal final class LoginToutViewController: UIViewController, MFMailComposeVie
     super.viewDidLoad()
 
     self.fbLoginManager.logOut()
+    
+    self.disclaimerHeightConstraint = NSLayoutConstraint(item: self.disclaimerButton,
+                                                         attribute: .height,
+                                                         relatedBy: .equal,
+                                                         toItem: nil,
+                                                         attribute: .height,
+                                                         multiplier: 10,
+                                                         constant: 60)
+    
+//    self.disclaimerHeightConstraintExpanded = NSLayoutConstraint(item: self.disclaimerButton,
+//                                                         attribute: .height,
+//                                                         relatedBy: .equal,
+//                                                         toItem: nil,
+//                                                         attribute: .height,
+//                                                         multiplier: 10,
+//                                                         constant: 140)
 
     self.sessionStartedObserver = NotificationCenter.default
       .addObserver(forName: .ksr_sessionStarted, object: nil, queue: nil) { [weak self] _ in
@@ -71,11 +90,15 @@ internal final class LoginToutViewController: UIViewController, MFMailComposeVie
     _ = self.fbLoginButton |> fbLoginButtonStyle
     _ = self.disclaimerButton
       |> disclaimerButtonStyle
+    _ = self.readMoreButton |> readMoreButtonStyle
     _ = self.loginButton |> loginWithEmailButtonStyle
     _ = self.rootStackView
       |> loginRootStackViewStyle
       |> UIStackView.lens.spacing .~ Styles.grid(5)
     _ = self.signupButton |> signupWithEmailButtonStyle
+    
+    disclaimerHeightConstraint.isActive = true
+//    disclaimerHeightConstraintExpanded.isActive = false
 
     _ = self.bringCreativeProjectsToLifeLabel
       |> UILabel.lens.font %~~ { _, l in
@@ -265,7 +288,40 @@ internal final class LoginToutViewController: UIViewController, MFMailComposeVie
         }
     }
   }
+  @IBAction func readMoreButtonPressed(_ sender: Any) {
+//    if disclaimerHeightConstraintExpanded.isActive {
+//      disclaimerButton.titleLabel?.numberOfLines = 3
+//      disclaimerButton.titleLabel?.lineBreakMode = .byTruncatingTail
+//
+//      disclaimerHeightConstraint.isActive = true
+//      disclaimerHeightConstraintExpanded.isActive = false
+//    } else {
+//      disclaimerButton.titleLabel?.numberOfLines = 0
+//      disclaimerButton.titleLabel?.lineBreakMode = .byWordWrapping
+//
+//      disclaimerHeightConstraint.isActive = false
+//      disclaimerHeightConstraintExpanded.isActive = true
+//    }
+    
+    let isExpanded = self.disclaimerHeightConstraint.constant == 120
+    
+    self.disclaimerButton.titleLabel?.lineBreakMode = isExpanded ? .byTruncatingTail : .byWordWrapping
+    self.disclaimerButton.titleLabel?.numberOfLines = isExpanded ? 3 : 0
 
+    self.disclaimerButton.titleLabel?.alpha = 0.0
+    
+    let titleString = isExpanded ? "Read more" : "Read less"
+    
+    self.readMoreButton.titleLabel?.alpha = 0.0
+    self.readMoreButton.setTitle(titleString, for: .normal)
+
+    UIView.animate(withDuration: 0.3) {
+      self.disclaimerHeightConstraint.constant = isExpanded ? 60 : 120
+      self.disclaimerButton.titleLabel?.alpha = 1.0
+      self.readMoreButton.titleLabel?.alpha = 1.0
+    }
+  }
+  
   @objc fileprivate func closeButtonPressed() {
     self.dismiss(animated: true, completion: nil)
   }
