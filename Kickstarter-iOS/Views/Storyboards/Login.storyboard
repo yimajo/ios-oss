@@ -26,10 +26,10 @@
                                 <rect key="frame" x="20" y="20" width="360" height="511"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSN-BI-sXu">
-                                        <rect key="frame" x="0.0" y="0.0" width="360" height="326"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="255"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UHD-eb-qXC">
-                                                <rect key="frame" x="0.0" y="0.0" width="360" height="326"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="255"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q9a-f5-7eI">
                                                         <rect key="frame" x="0.0" y="0.0" width="360" height="10"/>
@@ -93,13 +93,22 @@
                                                             </button>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Q6Z-wy-WZo">
-                                                        <rect key="frame" x="0.0" y="186" width="360" height="140"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="140" id="m5W-d1-nrw"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Legal"/>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Gtv-rJ-dwL">
+                                                        <rect key="frame" x="0.0" y="186" width="360" height="69"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6Z-wy-WZo">
+                                                                <rect key="frame" x="0.0" y="0.0" width="360" height="34"/>
+                                                                <state key="normal" title="Legal"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ac-4Y-wRI">
+                                                                <rect key="frame" x="0.0" y="39" width="360" height="30"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <connections>
+                                                                    <action selector="readMoreButtonPressed:" destination="jyD-hR-XbB" eventType="touchUpInside" id="fkY-St-qhy"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -143,6 +152,7 @@
                         <outlet property="fbLoginButton" destination="DI6-Zp-Yoj" id="jrl-tE-eBz"/>
                         <outlet property="loginButton" destination="tcm-YK-ZfH" id="qe9-86-RTl"/>
                         <outlet property="loginContextStackView" destination="Q9a-f5-7eI" id="62n-by-ckH"/>
+                        <outlet property="readMoreButton" destination="9Ac-4Y-wRI" id="TGf-fp-I6O"/>
                         <outlet property="rootStackView" destination="UHD-eb-qXC" id="aZl-hb-zFS"/>
                         <outlet property="signupButton" destination="ytH-Nw-2z0" id="kt8-oh-pu8"/>
                     </connections>
