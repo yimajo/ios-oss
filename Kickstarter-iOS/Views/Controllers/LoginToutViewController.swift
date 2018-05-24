@@ -19,7 +19,7 @@ internal final class LoginToutViewController: UIViewController, MFMailComposeVie
   @IBOutlet fileprivate weak var readMoreButton: UIButton!
   fileprivate var disclaimerHeightConstraint: NSLayoutConstraint!
   fileprivate var disclaimerHeightConstraintExpanded: NSLayoutConstraint!
-  
+
   fileprivate let helpViewModel = HelpViewModel()
   private var sessionStartedObserver: Any?
   fileprivate let viewModel: LoginToutViewModelType = LoginToutViewModel()
@@ -43,7 +43,7 @@ internal final class LoginToutViewController: UIViewController, MFMailComposeVie
     super.viewDidLoad()
 
     self.fbLoginManager.logOut()
-    
+
     self.disclaimerHeightConstraint = NSLayoutConstraint(item: self.disclaimerButton,
                                                          attribute: .height,
                                                          relatedBy: .equal,
@@ -51,7 +51,7 @@ internal final class LoginToutViewController: UIViewController, MFMailComposeVie
                                                          attribute: .height,
                                                          multiplier: 10,
                                                          constant: 60)
-    
+
 //    self.disclaimerHeightConstraintExpanded = NSLayoutConstraint(item: self.disclaimerButton,
 //                                                         attribute: .height,
 //                                                         relatedBy: .equal,
@@ -96,7 +96,7 @@ internal final class LoginToutViewController: UIViewController, MFMailComposeVie
       |> loginRootStackViewStyle
       |> UIStackView.lens.spacing .~ Styles.grid(5)
     _ = self.signupButton |> signupWithEmailButtonStyle
-    
+
     disclaimerHeightConstraint.isActive = true
 //    disclaimerHeightConstraintExpanded.isActive = false
 
@@ -302,16 +302,16 @@ internal final class LoginToutViewController: UIViewController, MFMailComposeVie
 //      disclaimerHeightConstraint.isActive = false
 //      disclaimerHeightConstraintExpanded.isActive = true
 //    }
-    
+
     let isExpanded = self.disclaimerHeightConstraint.constant == 120
-    
+
     self.disclaimerButton.titleLabel?.lineBreakMode = isExpanded ? .byTruncatingTail : .byWordWrapping
     self.disclaimerButton.titleLabel?.numberOfLines = isExpanded ? 3 : 0
 
     self.disclaimerButton.titleLabel?.alpha = 0.0
-    
+
     let titleString = isExpanded ? "Read more" : "Read less"
-    
+
     self.readMoreButton.titleLabel?.alpha = 0.0
     self.readMoreButton.setTitle(titleString, for: .normal)
 
@@ -321,7 +321,7 @@ internal final class LoginToutViewController: UIViewController, MFMailComposeVie
       self.readMoreButton.titleLabel?.alpha = 1.0
     }
   }
-  
+
   @objc fileprivate func closeButtonPressed() {
     self.dismiss(animated: true, completion: nil)
   }
