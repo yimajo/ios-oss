@@ -24,6 +24,7 @@ public enum Storyboard: String {
   case ProjectActivity
   case ProjectPamphlet
   case RewardPledge
+  case RewardsMap
   case Search
   case Settings
   case Thanks

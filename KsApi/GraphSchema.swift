@@ -116,6 +116,7 @@ public enum Query {
   case category(id: String, NonEmptySet<Category>)
   case project(slug: String, NonEmptySet<Project>)
   case rootCategories(NonEmptySet<Category>)
+  case user(NonEmptySet<User>)
 
   public enum Amount {
     case amount
@@ -171,6 +172,7 @@ public enum Query {
   public enum User {
     case biography
     case backedProjects(Set<QueryArg<Never>>, NonEmptySet<Connection<Project>>)
+    //case backings(Set<QueryArg<Never>>, NonEmptySet<Connection<Backing>>)
     case conversations(Set<QueryArg<Never>>, NonEmptySet<Connection<Conversation>>)
     case createdProjects(Set<QueryArg<Never>>, NonEmptySet<Connection<Project>>)
     case drop
@@ -187,6 +189,15 @@ public enum Query {
     case savedProjects(Set<QueryArg<Never>>, NonEmptySet<Connection<Project>>)
     case slug
     case url
+
+    public enum Backing {
+      case reward
+
+      public enum Reward {
+        case id
+        case name
+      }
+    }
   }
 }
 
@@ -203,8 +214,10 @@ extension Query: QueryType {
       return "node(id: \"\(id)\") { ... on Category { \(join(fields)) } }"
     case let .project(slug, fields):
       return "project(slug: \"\(slug)\") { \(join(fields)) }"
+    case let .user(fields):
+      return "me { \(join(fields)) }"
     case let .rootCategories(fields):
-      return "rootCategories { \(join(fields)) }"
+      return "{ rootCategories { id } }"//"rootCategories { \(join(fields)) }"
     }
   }
 }
@@ -306,6 +319,25 @@ extension Query.Category.ProjectsConnection.Argument: CustomStringConvertible {
   }
 }
 
+/// Reward
+
+extension Query.User.Backing: QueryType {
+  public var description: String {
+    switch self {
+    case .reward:                        return "reward"
+    }
+  }
+}
+
+extension Query.User.Backing.Reward: QueryType {
+  public var description: String {
+    switch self {
+    case .id:                        return "id"
+    case .name:                        return "name"
+    }
+  }
+}
+
 /// Project
 
 extension Query.Project: QueryType {
@@ -338,6 +370,7 @@ extension Query.User: QueryType {
     switch self {
     case .biography:                         return "biography"
     case let .backedProjects(args, fields):  return "backedProjects\(connection(args, fields))"
+    //case let .backings(fields):              return "backings\(join(fields))"
     case let .conversations(args, fields):   return "conversations\(connection(args, fields))"
     case let .createdProjects(args, fields): return "createdProjects\(connection(args, fields))"
     case .drop:                              return "drop"
@@ -387,6 +420,28 @@ extension Query.Conversation: QueryType {
     }
   }
 }
+
+public let backingsQuery =
+                        """
+                        query {
+                          me {
+                            backings {
+                              edges {
+                                node {
+                                  id
+                                  project {
+                                    name
+                                  }
+                                  reward {
+                                  id
+                                  name
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                        """
 
 /// Helpers
 

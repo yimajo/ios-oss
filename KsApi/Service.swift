@@ -195,6 +195,11 @@ public struct Service: ServiceType {
       return fetch(query: query)
   }
 
+  public func fetchGraphRewards(query: String)
+    -> SignalProducer<RootCategoriesEnvelope, GraphError> {
+      return fetch(query: query)
+  }
+
   public func fetchMessageThread(messageThreadId: Int)
     -> SignalProducer<MessageThreadEnvelope, ErrorEnvelope> {
 
@@ -517,6 +522,41 @@ public struct Service: ServiceType {
 
       let request = self.preparedRequest(forURL: self.serverConfig.graphQLEndpointUrl,
                                          queryString: Query.build(query))
+      let task = URLSession.shared.dataTask(with: request) {  data, response, error in
+        if let error = error {
+          observer.send(error: .requestError(error, response))
+          return
+        }
+
+        guard let data = data else {
+          observer.send(error: .emptyResponse(response))
+          return
+        }
+
+        do {
+          let decodedObject = try JSONDecoder().decode(GraphResponse<A>.self, from: data)
+          if let value = decodedObject.data {
+            observer.send(value: value)
+          }
+        } catch let error {
+          observer.send(error: .jsonDecodingError(responseString: String(data: data, encoding: .utf8),
+                                                  error: error))
+        }
+        observer.sendCompleted()
+      }
+      disposable.observeEnded {
+        task.cancel()
+      }
+      task.resume()
+    }
+  }
+
+  private func fetch<A: Swift.Decodable>(query: String) -> SignalProducer<A, GraphError> {
+
+    return SignalProducer<A, GraphError> { observer, disposable in
+
+      let request = self.preparedRequest(forURL: self.serverConfig.graphQLEndpointUrl,
+                                         queryString: query)
       let task = URLSession.shared.dataTask(with: request) {  data, response, error in
         if let error = error {
           observer.send(error: .requestError(error, response))
