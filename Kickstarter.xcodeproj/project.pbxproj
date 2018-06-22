@@ -898,6 +898,7 @@
 		D605D74820DBF783005736FF /* RewardsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D605D74620DBF77C005736FF /* RewardsMapViewController.swift */; };
 		D605D74920DBF78D005736FF /* RewardsMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D605D70E20DBF6F6005736FF /* RewardsMap.storyboard */; };
 		D605D74B20DBFD10005736FF /* RewardsMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D605D74A20DBFD10005736FF /* RewardsMapViewModel.swift */; };
+		D605D74D20DC5CB0005736FF /* GraphBacking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D605D74C20DC5CB0005736FF /* GraphBacking.swift */; };
 		D6089E8F209106CD0032CC99 /* PushNotificationDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6089E572090D5B40032CC99 /* PushNotificationDialog.swift */; };
 		D64850551FD879AB00B6AB91 /* ProjectActivityItemProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64850541FD879AB00B6AB91 /* ProjectActivityItemProviderTests.swift */; };
 		D6508F6C2049C83C002DCC01 /* UIStackView+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6508F342049C45D002DCC01 /* UIStackView+BackgroundColor.swift */; };
@@ -2438,6 +2439,7 @@
 		D605D70E20DBF6F6005736FF /* RewardsMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RewardsMap.storyboard; sourceTree = "<group>"; };
 		D605D74620DBF77C005736FF /* RewardsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsMapViewController.swift; sourceTree = "<group>"; };
 		D605D74A20DBFD10005736FF /* RewardsMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsMapViewModel.swift; sourceTree = "<group>"; };
+		D605D74C20DC5CB0005736FF /* GraphBacking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBacking.swift; sourceTree = "<group>"; };
 		D6089E572090D5B40032CC99 /* PushNotificationDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationDialog.swift; sourceTree = "<group>"; };
 		D64850541FD879AB00B6AB91 /* ProjectActivityItemProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectActivityItemProviderTests.swift; sourceTree = "<group>"; };
 		D6508F342049C45D002DCC01 /* UIStackView+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+BackgroundColor.swift"; sourceTree = "<group>"; };
@@ -3792,6 +3794,7 @@
 				D01588251EEB2ED7006E7684 /* VoidEnvelope.swift */,
 				D01587971EEB2ED6006E7684 /* lenses */,
 				D01587EE1EEB2ED7006E7684 /* templates */,
+				D605D74C20DC5CB0005736FF /* GraphBacking.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -5717,6 +5720,7 @@
 				D6C9A2561F75921500981E64 /* CategoryTemplates.swift in Sources */,
 				D015882D1EEB2ED7006E7684 /* BasicHTTPAuth.swift in Sources */,
 				D01589091EEB2ED7006E7684 /* ProjectsEnvelope.swift in Sources */,
+				D605D74D20DC5CB0005736FF /* GraphBacking.swift in Sources */,
 				D6C9A2541F758C7900981E64 /* GraphCategoryLenses.swift in Sources */,
 				D015883B1EEB2ED7006E7684 /* MimeType.swift in Sources */,
 				D01589931EEB2ED7006E7684 /* User.swift in Sources */,

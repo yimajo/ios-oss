@@ -9,7 +9,7 @@ public protocol RewardsMapViewModelInputs {
 }
 
 public protocol RewardsMapViewModelOutputs {
-  var rewards: Signal<Signal<[KsApi.Category], GraphError>.Event, NoError> { get }
+  var rewards: Signal<Signal<[KsApi.GraphBacking], GraphError>.Event, NoError> { get }
 }
 
 public protocol RewardsMapViewModelType {
@@ -27,16 +27,15 @@ public final class RewardsMapViewModel: RewardsMapViewModelType,
 
     self.rewards = viewDidLoadProperty.signal
       .switchMap {
-        AppEnvironment.current.apiService.fetchGraphCategories(query: rootCategoriesQuery)
+        AppEnvironment.current.apiService.fetchGraphBacking(queryString: backingsQuery)
           .ksr_delay(AppEnvironment.current.apiDelayInterval, on: AppEnvironment.current.scheduler)
-          .map { (envelope: RootCategoriesEnvelope) in
-            envelope.rootCategories
+          .map { (envelope: GraphBackingEnvelope) in envelope.backings
           }
           .materialize()
     }
   }
 
-  public let rewards: Signal<Signal<[KsApi.Category], GraphError>.Event, NoError>
+  public let rewards: Signal<Signal<[KsApi.GraphBacking], GraphError>.Event, NoError>
 
   fileprivate let viewDidLoadProperty = MutableProperty(())
   public func viewDidLoad() {

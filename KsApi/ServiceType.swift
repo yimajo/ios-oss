@@ -111,6 +111,8 @@ public protocol ServiceType {
   func fetchGraphCategory(query: NonEmptySet<Query>)
     -> SignalProducer<CategoryEnvelope, GraphError>
 
+  func fetchGraphBacking(queryString: String) -> SignalProducer<GraphBackingEnvelope, GraphError>
+
   /// Fetches all of the messages in a particular message thread.
   func fetchMessageThread(messageThreadId: Int)
     -> SignalProducer<MessageThreadEnvelope, ErrorEnvelope>

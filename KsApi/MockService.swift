@@ -535,6 +535,10 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: CategoryEnvelope(node: .template |> Category.lens.id .~ "\(query.head)"))
   }
 
+  internal func fetchGraphBacking(queryString: String) -> SignalProducer<GraphBackingEnvelope, GraphError> {
+    return .empty
+  }
+
   internal func fetchGraph<A>(query: NonEmptySet<Query>) -> SignalProducer<A, GraphError> where A: Decodable {
     return .empty
   }

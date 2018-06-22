@@ -195,9 +195,9 @@ public struct Service: ServiceType {
       return fetch(query: query)
   }
 
-  public func fetchGraphRewards(query: String)
-    -> SignalProducer<RootCategoriesEnvelope, GraphError> {
-      return fetch(query: query)
+  public func fetchGraphBacking(queryString: String)
+    -> SignalProducer<GraphBackingEnvelope, GraphError> {
+      return fetch(queryString: queryString)
   }
 
   public func fetchMessageThread(messageThreadId: Int)
@@ -551,12 +551,12 @@ public struct Service: ServiceType {
     }
   }
 
-  private func fetch<A: Swift.Decodable>(query: String) -> SignalProducer<A, GraphError> {
+  private func fetch<A: Swift.Decodable>(queryString: String) -> SignalProducer<A, GraphError> {
 
     return SignalProducer<A, GraphError> { observer, disposable in
 
       let request = self.preparedRequest(forURL: self.serverConfig.graphQLEndpointUrl,
-                                         queryString: query)
+                                         queryString: queryString)
       let task = URLSession.shared.dataTask(with: request) {  data, response, error in
         if let error = error {
           observer.send(error: .requestError(error, response))
