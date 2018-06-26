@@ -77,6 +77,8 @@
 		01F219561DC12BF7005DD2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F219521DC12697005DD2E4 /* LaunchScreen.storyboard */; };
 		01F547ED1D53994B000A98EF /* TabBarItemStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F547EC1D53994B000A98EF /* TabBarItemStyles.swift */; };
 		01FD71EC1D3808E500070BAC /* BarButtonItemStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FD71EB1D3808E500070BAC /* BarButtonItemStyles.swift */; };
+		1608A64820E29DBF00CBA7B9 /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1608A60820E29DA300CBA7B9 /* User.graphql */; };
+		162F1F1120E287EE00A278CD /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162F1EDA20E287CE00A278CD /* Apollo.framework */; };
 		59019FB61D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59019FB51D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift */; };
 		59019FBA1D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59019FB81D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift */; };
 		59322F071CD27B1000C90CC6 /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59322F051CD27B1000C90CC6 /* ProfileDataSource.swift */; };
@@ -928,6 +930,62 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		162F1ED920E287CE00A278CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FC750441D2A532C00458D91;
+			remoteInfo = Apollo;
+		};
+		162F1EDB20E287CE00A278CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FC7504E1D2A532D00458D91;
+			remoteInfo = ApolloTests;
+		};
+		162F1EDD20E287CE00A278CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FA6ABBC1EC0A988000017BE;
+			remoteInfo = ApolloCacheDependentTests;
+		};
+		162F1EDF20E287CE00A278CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FC631331E6AE2080062707E;
+			remoteInfo = ApolloPerformanceTests;
+		};
+		162F1EE120E287CE00A278CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FCE2CFA1E6C213D00E34457;
+			remoteInfo = StarWarsAPI;
+		};
+		162F1EE320E287CE00A278CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FACA9C61F42E67200AE2DBD;
+			remoteInfo = GitHubAPI;
+		};
+		162F1EE520E287CE00A278CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FD637E11E6ACF88001EDBC8;
+			remoteInfo = "TestHost iOS";
+		};
+		162F1EE720E287CE00A278CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9F8A95781EC0FC1200304A2D;
+			remoteInfo = ApolloTestSupport;
+		};
 		80388E201F21429100B2EE88 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7E06C711C5A6EB300EBDCC2 /* Project object */;
@@ -1636,6 +1694,9 @@
 		01F219521DC12697005DD2E4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01F547EC1D53994B000A98EF /* TabBarItemStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemStyles.swift; sourceTree = "<group>"; };
 		01FD71EB1D3808E500070BAC /* BarButtonItemStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarButtonItemStyles.swift; sourceTree = "<group>"; };
+		1608A60820E29DA300CBA7B9 /* User.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = User.graphql; sourceTree = "<group>"; };
+		162F1EC020E287CD00A278CD /* Apollo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Apollo.xcodeproj; path = "../apollo-ios/Apollo.xcodeproj"; sourceTree = "<group>"; };
+		162F1F1420E29AF700A278CD /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		3D1363951F0191FB00B53420 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		59019FB51D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardReferrerRowStackViewViewModel.swift; sourceTree = "<group>"; };
 		59019FB81D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardReferrerRowStackView.swift; sourceTree = "<group>"; };
@@ -2555,6 +2616,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				162F1F1120E287EE00A278CD /* Apollo.framework in Frameworks */,
 				A73924001D27230B004524C3 /* Kickstarter_Framework.framework in Frameworks */,
 				A7BA543E1E1E493600E54377 /* LiveStream.framework in Frameworks */,
 				A7722F401D2D3B6B0049BCDC /* FBSDKCoreKit.framework in Frameworks */,
@@ -2621,6 +2683,30 @@
 				A731BF581D1ED60800A734AC /* WebViewController.swift */,
 			);
 			name = Library;
+			sourceTree = "<group>";
+		};
+		162F1EC120E287CD00A278CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				162F1EDA20E287CE00A278CD /* Apollo.framework */,
+				162F1EDC20E287CE00A278CD /* ApolloTests.xctest */,
+				162F1EDE20E287CE00A278CD /* ApolloCacheDependentTests.xctest */,
+				162F1EE020E287CE00A278CD /* ApolloPerformanceTests.xctest */,
+				162F1EE220E287CE00A278CD /* StarWarsAPI.framework */,
+				162F1EE420E287CE00A278CD /* GitHubAPI.framework */,
+				162F1EE620E287CE00A278CD /* TestHost iOS.app */,
+				162F1EE820E287CE00A278CD /* ApolloTestSupport.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		162F1F1320E2883900A278CD /* Apollo */ = {
+			isa = PBXGroup;
+			children = (
+				162F1F1420E29AF700A278CD /* schema.json */,
+				1608A60820E29DA300CBA7B9 /* User.graphql */,
+			);
+			path = Apollo;
 			sourceTree = "<group>";
 		};
 		802800561C88F62500141235 /* Configs */ = {
@@ -3286,6 +3372,7 @@
 				A7D1F9551C850B7C000D41D5 /* Info.plist */,
 				A7D1F9471C850B7C000D41D5 /* AppDelegate.swift */,
 				A7D1F9501C850B7C000D41D5 /* Assets.xcassets */,
+				162F1F1320E2883900A278CD /* Apollo */,
 				A7E315BD1C88AA56000DD85A /* DataSources */,
 				0127FC511C98BFD000E335C6 /* Library */,
 				A7A5F8221D11ECF60036139A /* Locales */,
@@ -3343,6 +3430,7 @@
 			children = (
 				80762E261D071BFE0074189D /* Alamofire.xcodeproj */,
 				80762DE71D071BCF0074189D /* AlamofireImage.xcodeproj */,
+				162F1EC020E287CD00A278CD /* Apollo.xcodeproj */,
 				D04277D01EEB08D800600E9C /* Argo.xcodeproj */,
 				D04277E81EEB08E100600E9C /* Curry.xcodeproj */,
 				A73778921D819736004C2A9B /* FBSnapshotTestCase.xcodeproj */,
@@ -4126,6 +4214,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7D1F9611C850B7C000D41D5 /* Build configuration list for PBXNativeTarget "Kickstarter-iOS" */;
 			buildPhases = (
+				162F1F1220E2881C00A278CD /* Generate Apollo GraphQL API */,
 				A7D1F9411C850B7C000D41D5 /* Sources */,
 				A7D1F9421C850B7C000D41D5 /* Frameworks */,
 				A7D1F9431C850B7C000D41D5 /* Resources */,
@@ -4306,6 +4395,10 @@
 					ProjectRef = 80762DE71D071BCF0074189D /* AlamofireImage.xcodeproj */;
 				},
 				{
+					ProductGroup = 162F1EC120E287CD00A278CD /* Products */;
+					ProjectRef = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+				},
+				{
 					ProductGroup = D04277D11EEB08D800600E9C /* Products */;
 					ProjectRef = D04277D01EEB08D800600E9C /* Argo.xcodeproj */;
 				},
@@ -4354,6 +4447,62 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		162F1EDA20E287CE00A278CD /* Apollo.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Apollo.framework;
+			remoteRef = 162F1ED920E287CE00A278CD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		162F1EDC20E287CE00A278CD /* ApolloTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ApolloTests.xctest;
+			remoteRef = 162F1EDB20E287CE00A278CD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		162F1EDE20E287CE00A278CD /* ApolloCacheDependentTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ApolloCacheDependentTests.xctest;
+			remoteRef = 162F1EDD20E287CE00A278CD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		162F1EE020E287CE00A278CD /* ApolloPerformanceTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ApolloPerformanceTests.xctest;
+			remoteRef = 162F1EDF20E287CE00A278CD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		162F1EE220E287CE00A278CD /* StarWarsAPI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = StarWarsAPI.framework;
+			remoteRef = 162F1EE120E287CE00A278CD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		162F1EE420E287CE00A278CD /* GitHubAPI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GitHubAPI.framework;
+			remoteRef = 162F1EE320E287CE00A278CD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		162F1EE620E287CE00A278CD /* TestHost iOS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "TestHost iOS.app";
+			remoteRef = 162F1EE520E287CE00A278CD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		162F1EE820E287CE00A278CD /* ApolloTestSupport.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ApolloTestSupport.framework;
+			remoteRef = 162F1EE720E287CE00A278CD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		80762DF31D071BCF0074189D /* AlamofireImage.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -4884,6 +5033,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1608A64820E29DBF00CBA7B9 /* User.graphql in Resources */,
 				A7E1C4F31D18C8B3002D6DE3 /* 1Password.xcassets in Resources */,
 				9D50E9471D2EDBE50096DAEC /* Assets.xcassets in Resources */,
 				80265C291F60C51C00E14935 /* HockeySDKResources.bundle in Resources */,
@@ -4916,6 +5066,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		162F1F1220E2881C00A278CD /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/Apollo/schema.json",
+			);
+			name = "Generate Apollo GraphQL API";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema \"${SCRIPT_INPUT_FILE_0}\" --output API.swift";
+		};
 		16344A3D20B4F6B700610E8D /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
