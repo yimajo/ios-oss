@@ -77,8 +77,10 @@
 		01F219561DC12BF7005DD2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F219521DC12697005DD2E4 /* LaunchScreen.storyboard */; };
 		01F547ED1D53994B000A98EF /* TabBarItemStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F547EC1D53994B000A98EF /* TabBarItemStyles.swift */; };
 		01FD71EC1D3808E500070BAC /* BarButtonItemStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FD71EB1D3808E500070BAC /* BarButtonItemStyles.swift */; };
-		1608A64820E29DBF00CBA7B9 /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1608A60820E29DA300CBA7B9 /* User.graphql */; };
 		162F1F1120E287EE00A278CD /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162F1EDA20E287CE00A278CD /* Apollo.framework */; };
+		16491B5220E2C7040025C74B /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 16491B5120E2C7040025C74B /* User.graphql */; };
+		16491B5320E2C7BF0025C74B /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162F1EDA20E287CE00A278CD /* Apollo.framework */; };
+		16491B5420E2C7BF0025C74B /* Apollo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 162F1EDA20E287CE00A278CD /* Apollo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59019FB61D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59019FB51D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift */; };
 		59019FBA1D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59019FB81D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift */; };
 		59322F071CD27B1000C90CC6 /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59322F051CD27B1000C90CC6 /* ProfileDataSource.swift */; };
@@ -986,6 +988,20 @@
 			remoteGlobalIDString = 9F8A95781EC0FC1200304A2D;
 			remoteInfo = ApolloTestSupport;
 		};
+		16491B4F20E2C6BC0025C74B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FC750431D2A532C00458D91;
+			remoteInfo = Apollo;
+		};
+		16491B5520E2C7BF0025C74B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 162F1EC020E287CD00A278CD /* Apollo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FC750431D2A532C00458D91;
+			remoteInfo = Apollo;
+		};
 		80388E201F21429100B2EE88 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7E06C711C5A6EB300EBDCC2 /* Project object */;
@@ -1614,6 +1630,7 @@
 				D0745B061EEB09E500FA53D3 /* Curry.framework in Embed Frameworks */,
 				A73924011D272312004524C3 /* Kickstarter_Framework.framework in Embed Frameworks */,
 				80762E431D071CB70074189D /* AlamofireImage.framework in Embed Frameworks */,
+				16491B5420E2C7BF0025C74B /* Apollo.framework in Embed Frameworks */,
 				D0B45B6C1EF858C00020A8DA /* KsApi.framework in Embed Frameworks */,
 				D0B45B701EF858DE0020A8DA /* Prelude_UIKit.framework in Embed Frameworks */,
 				A7BA543F1E1E493600E54377 /* LiveStream.framework in Embed Frameworks */,
@@ -1694,9 +1711,9 @@
 		01F219521DC12697005DD2E4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01F547EC1D53994B000A98EF /* TabBarItemStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemStyles.swift; sourceTree = "<group>"; };
 		01FD71EB1D3808E500070BAC /* BarButtonItemStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarButtonItemStyles.swift; sourceTree = "<group>"; };
-		1608A60820E29DA300CBA7B9 /* User.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = User.graphql; sourceTree = "<group>"; };
 		162F1EC020E287CD00A278CD /* Apollo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Apollo.xcodeproj; path = "../apollo-ios/Apollo.xcodeproj"; sourceTree = "<group>"; };
 		162F1F1420E29AF700A278CD /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		16491B5120E2C7040025C74B /* User.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = User.graphql; sourceTree = "<group>"; };
 		3D1363951F0191FB00B53420 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		59019FB51D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardReferrerRowStackViewViewModel.swift; sourceTree = "<group>"; };
 		59019FB81D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardReferrerRowStackView.swift; sourceTree = "<group>"; };
@@ -2626,6 +2643,7 @@
 				D01BEA0C1F0259AC0064C1D9 /* Runes.framework in Frameworks */,
 				A7E3BE771D415FF900F63EE6 /* HockeySDK.framework in Frameworks */,
 				D01BEA081F0259A30064C1D9 /* Result.framework in Frameworks */,
+				16491B5320E2C7BF0025C74B /* Apollo.framework in Frameworks */,
 				D0B45CF41EF864700020A8DA /* ReactiveExtensions.framework in Frameworks */,
 				D0745B491EEB0B6C00FA53D3 /* ReactiveSwift.framework in Frameworks */,
 				D0745AD41EEB09DE00FA53D3 /* Argo.framework in Frameworks */,
@@ -2704,7 +2722,7 @@
 			isa = PBXGroup;
 			children = (
 				162F1F1420E29AF700A278CD /* schema.json */,
-				1608A60820E29DA300CBA7B9 /* User.graphql */,
+				16491B5120E2C7040025C74B /* User.graphql */,
 			);
 			path = Apollo;
 			sourceTree = "<group>";
@@ -4224,6 +4242,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				16491B5020E2C6BC0025C74B /* PBXTargetDependency */,
 				A73923FF1D272302004524C3 /* PBXTargetDependency */,
 				A7BA543D1E1E493600E54377 /* PBXTargetDependency */,
 				D0745AD71EEB09DE00FA53D3 /* PBXTargetDependency */,
@@ -4235,6 +4254,7 @@
 				D0B45CF71EF864700020A8DA /* PBXTargetDependency */,
 				D01BEA0B1F0259A30064C1D9 /* PBXTargetDependency */,
 				D01BEA0F1F0259AC0064C1D9 /* PBXTargetDependency */,
+				16491B5620E2C7BF0025C74B /* PBXTargetDependency */,
 			);
 			name = "Kickstarter-iOS";
 			productName = Kickstarter;
@@ -5033,7 +5053,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1608A64820E29DBF00CBA7B9 /* User.graphql in Resources */,
+				16491B5220E2C7040025C74B /* User.graphql in Resources */,
 				A7E1C4F31D18C8B3002D6DE3 /* 1Password.xcassets in Resources */,
 				9D50E9471D2EDBE50096DAEC /* Assets.xcassets in Resources */,
 				80265C291F60C51C00E14935 /* HockeySDKResources.bundle in Resources */,
@@ -5076,10 +5096,11 @@
 			);
 			name = "Generate Apollo GraphQL API";
 			outputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/Apollo/API.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema \"${SCRIPT_INPUT_FILE_0}\" --output API.swift";
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema \"${SCRIPT_INPUT_FILE_0}\" --output \"${SCRIPT_OUTPUT_FILE_0}\"";
 		};
 		16344A3D20B4F6B700610E8D /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5947,6 +5968,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		16491B5020E2C6BC0025C74B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Apollo;
+			targetProxy = 16491B4F20E2C6BC0025C74B /* PBXContainerItemProxy */;
+		};
+		16491B5620E2C7BF0025C74B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Apollo;
+			targetProxy = 16491B5520E2C7BF0025C74B /* PBXContainerItemProxy */;
+		};
 		80388E211F21429100B2EE88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A7BA54281E1E493500E54377 /* LiveStream */;

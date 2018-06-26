@@ -1,4 +1,4 @@
-query GraphUser {
+query User {
   me {
     name
   }
