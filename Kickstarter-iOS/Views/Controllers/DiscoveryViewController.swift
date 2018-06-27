@@ -44,9 +44,9 @@ internal final class DiscoveryViewController: UIViewController {
 
     let ap: ApolloClient = {
       let config = URLSessionConfiguration.default
-      config.httpAdditionalHeaders = ["Authorization":"token [REDACTED]]"]
+      config.httpAdditionalHeaders = ["Authorization":"token []"]
 
-      let url = URL(string: "http://ksr.graphql/graph")!
+      let url = URL(string: "http:/some.test/graph")!
 
       return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: config))
     }()
