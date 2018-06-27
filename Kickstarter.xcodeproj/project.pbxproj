@@ -897,14 +897,14 @@
 		D0D2ABAA1E9677EC008D298A /* LiveStreamTypesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D2ABA61E9677DD008D298A /* LiveStreamTypesTests.swift */; };
 		D60178B720E2C9D40091EF0B /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60178A820E2C96F0091EF0B /* Apollo.framework */; };
 		D60178C120E2DB2F0091EF0B /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60178A820E2C96F0091EF0B /* Apollo.framework */; };
-		D60178C520E2DE090091EF0B /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = D60178C220E2DE080091EF0B /* schema.json */; };
-		D60178C820E2ED850091EF0B /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D60178C420E2DE090091EF0B /* User.graphql */; };
-		D60178C920E2EEDA0091EF0B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60178C320E2DE090091EF0B /* API.swift */; };
 		D6089E8F209106CD0032CC99 /* PushNotificationDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6089E572090D5B40032CC99 /* PushNotificationDialog.swift */; };
 		D64850551FD879AB00B6AB91 /* ProjectActivityItemProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64850541FD879AB00B6AB91 /* ProjectActivityItemProviderTests.swift */; };
 		D6508F6C2049C83C002DCC01 /* UIStackView+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6508F342049C45D002DCC01 /* UIStackView+BackgroundColor.swift */; };
 		D67F29361F68333800E399A6 /* GraphSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67F29351F68333800E399A6 /* GraphSchema.swift */; };
-		D688C05320E3D85500A816D4 /* RootCategories.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D688C05220E3D85500A816D4 /* RootCategories.graphql */; };
+		D688C05320E3D85500A816D4 /* RootCategory.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D688C05220E3D85500A816D4 /* RootCategory.graphql */; };
+		D688C09620E3E92100A816D4 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = D688C09320E3E92000A816D4 /* schema.json */; };
+		D688C09820E3E92100A816D4 /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D688C09520E3E92100A816D4 /* User.graphql */; };
+		D688C09920E4184F00A816D4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D688C09420E3E92000A816D4 /* API.swift */; };
 		D6A7AB3A1FDAF24D007B20AE /* DiscoveryPostcardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A7AB371FD9EDFD007B20AE /* DiscoveryPostcardCell.xib */; };
 		D6A7AB401FDAF3EC007B20AE /* ThanksCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A7AB3E1FDAF3EC007B20AE /* ThanksCategoryCell.xib */; };
 		D6AE52251FD1B3F600BEC788 /* RootCategoriesEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE52241FD1B3F600BEC788 /* RootCategoriesEnvelope.swift */; };
@@ -2495,14 +2495,14 @@
 		D0FD4CC61E2642F200488660 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D0FD4CC81E26433C00488660 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D601789C20E2C96F0091EF0B /* Apollo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Apollo.xcodeproj; path = "../../Downloads/apollo-ios-master/Apollo.xcodeproj"; sourceTree = "<group>"; };
-		D60178C220E2DE080091EF0B /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = schema.json; path = "Kickstarter-iOS/Apollo/schema.json"; sourceTree = SOURCE_ROOT; };
-		D60178C320E2DE090091EF0B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = "Kickstarter-iOS/Apollo/API.swift"; sourceTree = SOURCE_ROOT; };
-		D60178C420E2DE090091EF0B /* User.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = User.graphql; path = "Kickstarter-iOS/Apollo/User.graphql"; sourceTree = SOURCE_ROOT; };
 		D6089E572090D5B40032CC99 /* PushNotificationDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationDialog.swift; sourceTree = "<group>"; };
 		D64850541FD879AB00B6AB91 /* ProjectActivityItemProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectActivityItemProviderTests.swift; sourceTree = "<group>"; };
 		D6508F342049C45D002DCC01 /* UIStackView+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+BackgroundColor.swift"; sourceTree = "<group>"; };
 		D67F29351F68333800E399A6 /* GraphSchema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphSchema.swift; sourceTree = "<group>"; };
-		D688C05220E3D85500A816D4 /* RootCategories.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RootCategories.graphql; sourceTree = SOURCE_ROOT; };
+		D688C05220E3D85500A816D4 /* RootCategory.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RootCategory.graphql; sourceTree = SOURCE_ROOT; };
+		D688C09320E3E92000A816D4 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = schema.json; path = "Kickstarter-iOS/schema.json"; sourceTree = SOURCE_ROOT; };
+		D688C09420E3E92000A816D4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = "Kickstarter-iOS/API.swift"; sourceTree = SOURCE_ROOT; };
+		D688C09520E3E92100A816D4 /* User.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = User.graphql; path = "Kickstarter-iOS/User.graphql"; sourceTree = SOURCE_ROOT; };
 		D6A7AB371FD9EDFD007B20AE /* DiscoveryPostcardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoveryPostcardCell.xib; sourceTree = "<group>"; };
 		D6A7AB3E1FDAF3EC007B20AE /* ThanksCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThanksCategoryCell.xib; sourceTree = "<group>"; };
 		D6AE52241FD1B3F600BEC788 /* RootCategoriesEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCategoriesEnvelope.swift; sourceTree = "<group>"; };
@@ -2695,10 +2695,10 @@
 		162F1F1320E2883900A278CD /* Apollo */ = {
 			isa = PBXGroup;
 			children = (
-				D60178C320E2DE090091EF0B /* API.swift */,
-				D60178C220E2DE080091EF0B /* schema.json */,
-				D60178C420E2DE090091EF0B /* User.graphql */,
-				D688C05220E3D85500A816D4 /* RootCategories.graphql */,
+				D688C09420E3E92000A816D4 /* API.swift */,
+				D688C09320E3E92000A816D4 /* schema.json */,
+				D688C09520E3E92100A816D4 /* User.graphql */,
+				D688C05220E3D85500A816D4 /* RootCategory.graphql */,
 			);
 			name = Apollo;
 			path = ../Apollo;
@@ -4224,7 +4224,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7D1F9611C850B7C000D41D5 /* Build configuration list for PBXNativeTarget "Kickstarter-iOS" */;
 			buildPhases = (
-				D60178B920E2CC370091EF0B /* Generate Apollo GraphQL API */,
+				D688C09220E3E8B200A816D4 /* Generate Apollo GraphQL API */,
 				A7D1F9411C850B7C000D41D5 /* Sources */,
 				A7D1F9421C850B7C000D41D5 /* Frameworks */,
 				A7D1F9431C850B7C000D41D5 /* Resources */,
@@ -5021,7 +5021,6 @@
 				014D629D1E6E5B070033D2BD /* BackerDashboardEmptyStateCell.xib in Resources */,
 				A71C7F6E1E2FA03B0051E5E3 /* LiveStreamDiscovery.storyboard in Resources */,
 				A787E6BE1E28A85A0017B186 /* LiveStream.storyboard in Resources */,
-				D60178C820E2ED850091EF0B /* User.graphql in Resources */,
 				A78838741D8A2EFF0081E94D /* ProjectPamphlet.storyboard in Resources */,
 				D6A7AB401FDAF3EC007B20AE /* ThanksCategoryCell.xib in Resources */,
 				01A120D11D2D646300B42F73 /* DashboardProjectsDrawer.storyboard in Resources */,
@@ -5032,7 +5031,7 @@
 				A73923CA1D272242004524C3 /* Settings.storyboard in Resources */,
 				A73923C01D272242004524C3 /* Discovery.storyboard in Resources */,
 				A73923C61D272242004524C3 /* Profile.storyboard in Resources */,
-				D688C05320E3D85500A816D4 /* RootCategories.graphql in Resources */,
+				D688C05320E3D85500A816D4 /* RootCategory.graphql in Resources */,
 				A73923C11D272242004524C3 /* Friends.storyboard in Resources */,
 				01940B2E1D46A9AD0074FCE3 /* Help.storyboard in Resources */,
 				014D62FF1E7211220033D2BD /* BackerDashboardProjectCell.xib in Resources */,
@@ -5045,11 +5044,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D688C09820E3E92100A816D4 /* User.graphql in Resources */,
 				A7E1C4F31D18C8B3002D6DE3 /* 1Password.xcassets in Resources */,
 				9D50E9471D2EDBE50096DAEC /* Assets.xcassets in Resources */,
 				80265C291F60C51C00E14935 /* HockeySDKResources.bundle in Resources */,
 				01F219561DC12BF7005DD2E4 /* LaunchScreen.storyboard in Resources */,
-				D60178C520E2DE090091EF0B /* schema.json in Resources */,
+				D688C09620E3E92100A816D4 /* schema.json in Resources */,
 				A73924051D27247E004524C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5092,7 +5092,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint > /dev/null; then\n    if [ -z \"$CI\" ]; then\n        echo \"Running swiftlint...\"\n        swiftlint\n    fi\nelse\n    echo \"warning: swiftlint not installed, run brew install swiftlint\"\nfi";
 		};
-		D60178B920E2CC370091EF0B /* Generate Apollo GraphQL API */ = {
+		D688C09220E3E8B200A816D4 /* Generate Apollo GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
@@ -5536,7 +5536,7 @@
 				A747A7DF1D454E8500AF199A /* ProjectPamphletContentViewController.swift in Sources */,
 				0157067D1E65F0420087DD68 /* BackerDashboardProjectsViewController.swift in Sources */,
 				A762EFF31C8CC663005581A4 /* ActivityFriendFollowCell.swift in Sources */,
-				D60178C920E2EEDA0091EF0B /* API.swift in Sources */,
+				D688C09920E4184F00A816D4 /* API.swift in Sources */,
 				59019FBA1D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift in Sources */,
 				D764DAFC1F7194EA00DC32AE /* CreatorDigestSettingsViewController.swift in Sources */,
 				015102AD1F1947C50006C0FC /* MessageThreadsDataSource.swift in Sources */,

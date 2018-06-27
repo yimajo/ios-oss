@@ -4,7 +4,7 @@ import Apollo
 
 public final class UserQuery: GraphQLQuery {
   public let operationDefinition =
-    "query User {\n  me {\n    __typename\n    name\n  }\n}"
+    "query User {\n  me {\n    __typename\n    id\n    name\n  }\n}"
 
   public init() {
   }
@@ -23,8 +23,7 @@ public final class UserQuery: GraphQLQuery {
     }
 
     public init(me: Me? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Query", "me": me.flatMap {
-        (value: Me) -> ResultMap in value.resultMap }])
+      self.init(unsafeResultMap: ["__typename": "Query", "me": me.flatMap { (value: Me) -> ResultMap in value.resultMap }])
     }
 
     /// You.
@@ -42,6 +41,7 @@ public final class UserQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
       ]
 
@@ -51,23 +51,32 @@ public final class UserQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(name: String) {
-        self.init(unsafeResultMap: ["__typename": "User", "name": name])
+      public init(id: GraphQLID, name: String) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name])
       }
 
       public var __typename: String {
         get {
-          return (resultMap["__typename"] as? String) ?? ""
+          return resultMap["__typename"]! as! String
         }
         set {
           resultMap.updateValue(newValue, forKey: "__typename")
         }
       }
 
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
       /// The user's provided name.
       public var name: String {
         get {
-          return (resultMap["name"] as? String) ?? ""
+          return resultMap["name"]! as! String
         }
         set {
           resultMap.updateValue(newValue, forKey: "name")

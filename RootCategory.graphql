@@ -1,4 +1,4 @@
-query RootCategories {
+query RootCategory {
   rootCategories {
     id
     name
