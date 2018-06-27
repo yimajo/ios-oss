@@ -898,12 +898,13 @@
 		D60178B720E2C9D40091EF0B /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60178A820E2C96F0091EF0B /* Apollo.framework */; };
 		D60178C120E2DB2F0091EF0B /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60178A820E2C96F0091EF0B /* Apollo.framework */; };
 		D60178C520E2DE090091EF0B /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = D60178C220E2DE080091EF0B /* schema.json */; };
-		D60178C620E2DE090091EF0B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60178C320E2DE090091EF0B /* API.swift */; };
-		D60178C720E2DE090091EF0B /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D60178C420E2DE090091EF0B /* User.graphql */; };
+		D60178C820E2ED850091EF0B /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D60178C420E2DE090091EF0B /* User.graphql */; };
+		D60178C920E2EEDA0091EF0B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60178C320E2DE090091EF0B /* API.swift */; };
 		D6089E8F209106CD0032CC99 /* PushNotificationDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6089E572090D5B40032CC99 /* PushNotificationDialog.swift */; };
 		D64850551FD879AB00B6AB91 /* ProjectActivityItemProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64850541FD879AB00B6AB91 /* ProjectActivityItemProviderTests.swift */; };
 		D6508F6C2049C83C002DCC01 /* UIStackView+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6508F342049C45D002DCC01 /* UIStackView+BackgroundColor.swift */; };
 		D67F29361F68333800E399A6 /* GraphSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67F29351F68333800E399A6 /* GraphSchema.swift */; };
+		D688C05320E3D85500A816D4 /* RootCategories.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D688C05220E3D85500A816D4 /* RootCategories.graphql */; };
 		D6A7AB3A1FDAF24D007B20AE /* DiscoveryPostcardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A7AB371FD9EDFD007B20AE /* DiscoveryPostcardCell.xib */; };
 		D6A7AB401FDAF3EC007B20AE /* ThanksCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A7AB3E1FDAF3EC007B20AE /* ThanksCategoryCell.xib */; };
 		D6AE52251FD1B3F600BEC788 /* RootCategoriesEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE52241FD1B3F600BEC788 /* RootCategoriesEnvelope.swift */; };
@@ -2501,6 +2502,7 @@
 		D64850541FD879AB00B6AB91 /* ProjectActivityItemProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectActivityItemProviderTests.swift; sourceTree = "<group>"; };
 		D6508F342049C45D002DCC01 /* UIStackView+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+BackgroundColor.swift"; sourceTree = "<group>"; };
 		D67F29351F68333800E399A6 /* GraphSchema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphSchema.swift; sourceTree = "<group>"; };
+		D688C05220E3D85500A816D4 /* RootCategories.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RootCategories.graphql; sourceTree = SOURCE_ROOT; };
 		D6A7AB371FD9EDFD007B20AE /* DiscoveryPostcardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoveryPostcardCell.xib; sourceTree = "<group>"; };
 		D6A7AB3E1FDAF3EC007B20AE /* ThanksCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThanksCategoryCell.xib; sourceTree = "<group>"; };
 		D6AE52241FD1B3F600BEC788 /* RootCategoriesEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCategoriesEnvelope.swift; sourceTree = "<group>"; };
@@ -2696,6 +2698,7 @@
 				D60178C320E2DE090091EF0B /* API.swift */,
 				D60178C220E2DE080091EF0B /* schema.json */,
 				D60178C420E2DE090091EF0B /* User.graphql */,
+				D688C05220E3D85500A816D4 /* RootCategories.graphql */,
 			);
 			name = Apollo;
 			path = ../Apollo;
@@ -5018,6 +5021,7 @@
 				014D629D1E6E5B070033D2BD /* BackerDashboardEmptyStateCell.xib in Resources */,
 				A71C7F6E1E2FA03B0051E5E3 /* LiveStreamDiscovery.storyboard in Resources */,
 				A787E6BE1E28A85A0017B186 /* LiveStream.storyboard in Resources */,
+				D60178C820E2ED850091EF0B /* User.graphql in Resources */,
 				A78838741D8A2EFF0081E94D /* ProjectPamphlet.storyboard in Resources */,
 				D6A7AB401FDAF3EC007B20AE /* ThanksCategoryCell.xib in Resources */,
 				01A120D11D2D646300B42F73 /* DashboardProjectsDrawer.storyboard in Resources */,
@@ -5028,6 +5032,7 @@
 				A73923CA1D272242004524C3 /* Settings.storyboard in Resources */,
 				A73923C01D272242004524C3 /* Discovery.storyboard in Resources */,
 				A73923C61D272242004524C3 /* Profile.storyboard in Resources */,
+				D688C05320E3D85500A816D4 /* RootCategories.graphql in Resources */,
 				A73923C11D272242004524C3 /* Friends.storyboard in Resources */,
 				01940B2E1D46A9AD0074FCE3 /* Help.storyboard in Resources */,
 				014D62FF1E7211220033D2BD /* BackerDashboardProjectCell.xib in Resources */,
@@ -5040,7 +5045,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D60178C720E2DE090091EF0B /* User.graphql in Resources */,
 				A7E1C4F31D18C8B3002D6DE3 /* 1Password.xcassets in Resources */,
 				9D50E9471D2EDBE50096DAEC /* Assets.xcassets in Resources */,
 				80265C291F60C51C00E14935 /* HockeySDKResources.bundle in Resources */,
@@ -5090,7 +5094,7 @@
 		};
 		D60178B920E2CC370091EF0B /* Generate Apollo GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -5098,7 +5102,7 @@
 			name = "Generate Apollo GraphQL API";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output API.swift";
 		};
@@ -5532,6 +5536,7 @@
 				A747A7DF1D454E8500AF199A /* ProjectPamphletContentViewController.swift in Sources */,
 				0157067D1E65F0420087DD68 /* BackerDashboardProjectsViewController.swift in Sources */,
 				A762EFF31C8CC663005581A4 /* ActivityFriendFollowCell.swift in Sources */,
+				D60178C920E2EEDA0091EF0B /* API.swift in Sources */,
 				59019FBA1D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift in Sources */,
 				D764DAFC1F7194EA00DC32AE /* CreatorDigestSettingsViewController.swift in Sources */,
 				015102AD1F1947C50006C0FC /* MessageThreadsDataSource.swift in Sources */,
@@ -5679,7 +5684,6 @@
 				A73924041D272404004524C3 /* AppDelegate.swift in Sources */,
 				0160E50F1EFAD7B2004F61D6 /* MessagesEmptyStateCell.swift in Sources */,
 				D0AA77C61FBE400E00A382B5 /* UITableViewCell+SeparatorCatch.swift in Sources */,
-				D60178C620E2DE090091EF0B /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

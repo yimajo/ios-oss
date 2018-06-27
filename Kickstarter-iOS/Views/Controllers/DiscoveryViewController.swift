@@ -1,3 +1,4 @@
+import Apollo
 import KsApi
 import Library
 import Prelude
@@ -40,6 +41,14 @@ internal final class DiscoveryViewController: UIViewController {
       .compactMap { $0 as? LiveStreamDiscoveryViewController }.first
 
     self.viewModel.inputs.viewDidLoad()
+
+
+    let apollo = ApolloClient(url: URL(string: "http://ksr.test/graph")!)
+
+    apollo.fetch(query: UserQuery()) { (result, error) in
+      guard let data = result?.data else { return }
+      print(data.me?.name)
+    }
   }
 
   override func viewWillAppear(_ animated: Bool) {

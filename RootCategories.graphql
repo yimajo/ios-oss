@@ -1,0 +1,6 @@
+query RootCategories {
+  rootCategories {
+    id
+    name
+  }
+}
