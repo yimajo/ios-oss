@@ -60,7 +60,7 @@ extension NSBundleType {
     case .beta:
       return KsApi.Secrets.HockeyAppId.beta
     case .alpha:
-      return KsApi.Secrets.HockeyAppId.alpha
+      return KsApi.Secrets.HockeyAppId.beta
     default:
       return nil
     }

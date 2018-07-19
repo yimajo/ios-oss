@@ -1,10 +1,12 @@
 import KsApi
 import Library
 import Prelude
+import QuickLook
 
 internal protocol RewardCellDelegate: class {
   /// Called when the reward cell needs to perform an expansion animation.
   func rewardCellWantsExpansion(_ cell: RewardCell)
+  func didTapPreviewButton(item: QLPreviewItem)
 }
 
 internal final class RewardCell: UITableViewCell, ValueCell {
@@ -270,5 +272,18 @@ internal final class RewardCell: UITableViewCell, ValueCell {
       self.itemsStackView.addArrangedSubview(label)
       self.itemsStackView.addArrangedSubview(separator)
     }
+  }
+
+  @IBAction func previewWithARButtonTapped(_ sender: UIButton) {
+    guard let item = rewardPreviewItem else { return }
+    self.delegate?.didTapPreviewButton(item: item)
+  }
+
+  private var rewardPreviewItem: QLPreviewItem? {
+    if let item = Bundle.framework.url(forResource: "Moon",
+                                       withExtension: "usdz") {
+      return item as QLPreviewItem
+    }
+    return nil
   }
 }

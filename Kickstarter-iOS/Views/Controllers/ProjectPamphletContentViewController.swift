@@ -1,8 +1,10 @@
+import ARKit
 import KsApi
 import LiveStream
 import Library
 import Prelude
 import Prelude_UIKit
+import QuickLook
 
 public protocol ProjectPamphletContentViewControllerDelegate: VideoViewControllerDelegate {
   func projectPamphletContent(_ controller: ProjectPamphletContentViewController, imageIsVisible: Bool)
@@ -16,6 +18,7 @@ public final class ProjectPamphletContentViewController: UITableViewController {
   internal weak var delegate: ProjectPamphletContentViewControllerDelegate?
   fileprivate let viewModel: ProjectPamphletContentViewModelType = ProjectPamphletContentViewModel()
   fileprivate var navBarController: ProjectNavBarViewController!
+  fileprivate var previewItem: QLPreviewItem!
 
   internal func configureWith(project: Project, liveStreamEvents: [LiveStreamEvent]) {
     self.viewModel.inputs.configureWith(project: project, liveStreamEvents: liveStreamEvents)
@@ -269,5 +272,29 @@ extension ProjectPamphletContentViewController: RewardCellDelegate {
     cell.contentView.setNeedsUpdateConstraints()
     self.tableView.beginUpdates()
     self.tableView.endUpdates()
+  }
+
+  internal func didTapPreviewButton(item: QLPreviewItem) {
+    self.previewItem = item
+
+    let previewInARViewController: QLPreviewController = QLPreviewController()
+    previewInARViewController.delegate = self
+    previewInARViewController.dataSource = self
+    self.present(previewInARViewController,
+                 animated: true,
+                 completion: nil)
+  }
+}
+
+extension ProjectPamphletContentViewController: QLPreviewControllerDataSource {
+  public func previewController(_ controller: QLPreviewController,
+                                previewItemAt index: Int) -> QLPreviewItem {
+    return previewItem
+  }
+}
+
+extension ProjectPamphletContentViewController: QLPreviewControllerDelegate {
+  public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+    return 1
   }
 }

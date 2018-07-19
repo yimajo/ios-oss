@@ -197,6 +197,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f93-ZC-FBg">
                                 <rect key="frame" x="0.0" y="428" width="360" height="30"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="previewWithARButtonTapped:" destination="2MS-QK-xPj" eventType="touchUpInside" id="cN6-uq-8sa"/>
+                                </connections>
                             </button>
                         </subviews>
                     </stackView>
