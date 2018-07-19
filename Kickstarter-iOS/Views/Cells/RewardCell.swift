@@ -29,6 +29,7 @@ internal final class RewardCell: UITableViewCell, ValueCell {
   @IBOutlet fileprivate weak var manageRewardButton: UIButton!
   @IBOutlet fileprivate weak var minimumLabel: UILabel!
   @IBOutlet fileprivate weak var minimumStackView: UIStackView!
+  @IBOutlet fileprivate weak var previewInARButton: UIButton!
   @IBOutlet fileprivate weak var rewardTitleLabel: UILabel!
   @IBOutlet fileprivate weak var rootStackView: UIStackView!
   @IBOutlet fileprivate weak var selectRewardButton: UIButton!
@@ -187,6 +188,11 @@ internal final class RewardCell: UITableViewCell, ValueCell {
       |> UIButton.lens.layer.cornerRadius .~ 0
       |> UIButton.lens.isUserInteractionEnabled .~ false
       |> UIButton.lens.isAccessibilityElement .~ false
+
+    _ = self.previewInARButton
+      |> greenButtonStyle
+      |> UIButton.lens.layer.cornerRadius .~ 0
+      |> UIButton.lens.title(for: .normal) .~ "Preview in AR"
 
     _ = self.manageRewardButton
       |> greenBorderButtonStyle
