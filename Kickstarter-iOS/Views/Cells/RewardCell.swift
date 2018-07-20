@@ -280,7 +280,7 @@ internal final class RewardCell: UITableViewCell, ValueCell {
   }
 
   private var rewardPreviewItem: QLPreviewItem? {
-    if let item = Bundle.framework.url(forResource: "Moon",
+    if let item = Bundle.framework.url(forResource: "gramophone",
                                        withExtension: "usdz") {
       return item as QLPreviewItem
     }
