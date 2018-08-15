@@ -6,6 +6,10 @@ public struct GraphResponse<T: Decodable>: Decodable {
   let data: T?
 }
 
+public struct UserResponse<T: Decodable>: Decodable {
+  let me: T?
+}
+
 /// Base Query Types
 
 extension Never: CustomStringConvertible {

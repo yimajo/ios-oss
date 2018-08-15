@@ -8,6 +8,10 @@ public struct ErrorEnvelope {
   public let httpCode: Int
   public let exception: Exception?
   public let facebookUser: FacebookUser?
+  public static let testError: ErrorEnvelope = ErrorEnvelope.init(errorMessages: [""],
+                                                                  ksrCode: nil,
+                                                                  httpCode: 500,
+                                                                  exception: nil)
 
   public init(errorMessages: [String], ksrCode: KsrCode?, httpCode: Int, exception: Exception?,
               facebookUser: FacebookUser? = nil) {

@@ -2,7 +2,7 @@ import Argo
 import Curry
 import Runes
 
-public struct Location {
+public struct Location: Codable {
   public let country: String
   public let displayableName: String
   public let id: Int

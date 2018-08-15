@@ -275,8 +275,12 @@ public struct Service: ServiceType {
       return requestPagination(url)
   }
 
+  public func fetchGraphUserSelf() -> SignalProducer<UserEnvelope, ErrorEnvelope> {
+    return fetchUser(query: query)
+  }
+
   public func fetchUserSelf() -> SignalProducer<User, ErrorEnvelope> {
-    return request(.userSelf)
+    return fetchGraphUserSelf().map { $0.me }
   }
 
   public func fetchUser(userId: Int) -> SignalProducer<User, ErrorEnvelope> {
@@ -546,6 +550,40 @@ public struct Service: ServiceType {
     }
   }
 
+  private func fetchUser<A: Swift.Decodable>(query: String) -> SignalProducer<A, ErrorEnvelope> {
+
+    return SignalProducer<A, ErrorEnvelope> { observer, disposable in
+
+      let request = self.preparedRequest(forURL: self.serverConfig.graphQLEndpointUrl,
+                                         queryString: query)
+      let task = URLSession.shared.dataTask(with: request) {  data, response, error in
+        if let error = error {
+          observer.send(error: .testError)
+          return
+        }
+
+        guard let data = data else {
+          observer.send(error: .testError)
+          return
+        }
+
+        do {
+          let decodedObject = try JSONDecoder().decode(GraphResponse<A>.self, from: data)
+          if let value = decodedObject.data {
+            observer.send(value: value)
+          }
+        } catch let error {
+          observer.send(error: .testError)
+        }
+        observer.sendCompleted()
+      }
+      disposable.observeEnded {
+        task.cancel()
+      }
+      task.resume()
+    }
+  }
+
   private func requestPagination<M: Argo.Decodable>(_ paginationUrl: String)
     -> SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
 
@@ -612,5 +650,16 @@ public struct Service: ServiceType {
 
       return SignalProducer(value: json)
         .map { json in decode(json) as M? }
+  }
+
+  private var query: String {
+    return """
+            query {
+              me {
+                name
+                id
+              }
+            }
+            """
   }
 }

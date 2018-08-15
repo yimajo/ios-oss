@@ -2,7 +2,11 @@ import Argo
 import Curry
 import Runes
 
-public struct User {
+public struct UserEnvelope: Codable {
+  public let me: User
+}
+
+public struct User: Codable {
   public let avatar: Avatar
   public let facebookConnected: Bool?
   public let id: Int
@@ -18,13 +22,13 @@ public struct User {
   public let social: Bool?
   public let stats: Stats
 
-  public struct Avatar {
-    public let large: String?
-    public let medium: String
-    public let small: String
+  public struct Avatar: Codable {
+    public let  large: String?
+    public let  medium: String
+    public let  small: String
   }
 
-  public struct NewsletterSubscriptions {
+  public struct NewsletterSubscriptions: Codable {
     public let arts: Bool?
     public let games: Bool?
     public let happening: Bool?
@@ -33,7 +37,7 @@ public struct User {
     public let weekly: Bool?
   }
 
-  public struct Notifications {
+  public struct Notifications: Codable {
     public let backings: Bool?
     public let comments: Bool?
     public let follower: Bool?
@@ -52,7 +56,7 @@ public struct User {
     public let creatorDigest: Bool?
   }
 
-  public struct Stats {
+  public struct Stats: Codable {
     public let backedProjectsCount: Int?
     public let createdProjectsCount: Int?
     public let memberProjectsCount: Int?
