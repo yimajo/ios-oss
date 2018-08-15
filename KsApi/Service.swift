@@ -556,7 +556,7 @@ public struct Service: ServiceType {
 
       let request = self.preparedRequest(forURL: self.serverConfig.graphQLEndpointUrl,
                                          queryString: query)
-      let task = URLSession.shared.dataTask(with: request) {  data, response, error in
+      let task = URLSession.shared.dataTask(with: request) {  data, _, error in
         if let error = error {
           observer.send(error: .testError)
           return
