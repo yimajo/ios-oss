@@ -360,7 +360,6 @@ extension Query.Comment: QueryType {
   }
 }
 
-
 /// User
 
 extension Query.User: QueryType {

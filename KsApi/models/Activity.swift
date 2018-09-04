@@ -104,7 +104,8 @@ extension Activity.MemberData: Argo.Decodable {
 //}
 //
 //private func commentInfo(_ json: [String: JSON]) -> (Author, String, TimeInterval, Bool, Int) {
-//  guard let author = json["author"], let body = json["body"], let createdAt = json["createdAt"], let deleted = json["deleted"], let id = json["id"] else {
+//  guard let author = json["author"], let body = json["body"], let createdAt = json["createdAt"],
+//let deleted = json["deleted"], let id = json["id"] else {
 //    return (.template, "", Date(timeIntervalSince1970: 1475361315).timeIntervalSince1970, false, 0)
 //  }
 //
@@ -116,5 +117,3 @@ extension Activity.MemberData: Argo.Decodable {
 //    <#code#>
 //  }
 //}
-
-

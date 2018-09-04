@@ -564,7 +564,6 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-
   internal func fetchGraph<A>(query: NonEmptySet<Query>) -> SignalProducer<A, GraphError> where A: Decodable {
     return .empty
   }

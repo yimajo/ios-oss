@@ -1,6 +1,6 @@
-import Foundation
 import Argo
 import Curry
+import Foundation
 import Runes
 
 public struct CommentsEnvelope: Swift.Decodable {
@@ -27,23 +27,6 @@ extension CommentsEnvelope.UrlsEnvelope.ApiEnvelope {
   }
 }
 
-//import Argo
-//import Curry
-//import Runes
-//
-//public struct CommentsEnvelope {
-//  public let comments: [Comment]
-//  public let urls: UrlsEnvelope
-//
-//  public struct UrlsEnvelope {
-//    public let api: ApiEnvelope
-//
-//    public struct ApiEnvelope {
-//      public let moreComments: String
-//    }
-//  }
-//}
-//
 extension CommentsEnvelope: Argo.Decodable {
   public static func decode(_ json: JSON) -> Decoded<CommentsEnvelope> {
     return curry(CommentsEnvelope.init)
@@ -65,3 +48,21 @@ extension CommentsEnvelope.UrlsEnvelope.ApiEnvelope: Argo.Decodable {
       <^> (json <| "more_comments" <|> .success(""))
   }
 }
+
+//import Argo
+//import Curry
+//import Runes
+//
+//public struct CommentsEnvelope {
+//  public let comments: [Comment]
+//  public let urls: UrlsEnvelope
+//
+//  public struct UrlsEnvelope {
+//    public let api: ApiEnvelope
+//
+//    public struct ApiEnvelope {
+//      public let moreComments: String
+//    }
+//  }
+//}
+//

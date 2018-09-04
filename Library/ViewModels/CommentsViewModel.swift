@@ -107,13 +107,13 @@ CommentsViewModelOutputs {
       requestFirstPageWith: requestFirstPageWith,
       requestNextPageWhen: isCloseToBottom,
       clearOnNewRequest: false,
-      valuesFromEnvelope: { (envelope: CommentsEnvelope) in envelope.comments },
-      cursorFromEnvelope: { (envelope: CommentsEnvelope) in envelope.urls.api.moreComments },
+      valuesFromEnvelope: { $0.comments },
+      cursorFromEnvelope: { $0.urls.api.moreComments },
       requestFromParams: { updateOrProject in
         updateOrProject.ifLeft(AppEnvironment.current.apiService.fetchGraphComment(query: commentsQuery),
           ifRight: AppEnvironment.current.apiService.fetchGraphComment(query: commentsQuery))
       },
-      requestFromCursor: { AppEnvironment.current.apiService.fetchComment(paginationUrl: $0) })
+      requestFromCursor: { AppEnvironment.current.apiService.fetchComments(paginationUrl: $0) })
 
     self.commentsAreLoading = isLoading
 

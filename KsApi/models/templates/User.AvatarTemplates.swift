@@ -13,4 +13,3 @@ extension Author.Avatar {
     small: "http://www.kickstarter.com/small.jpg"
   )
 } // give this it's own file
-
