@@ -1,6 +1,6 @@
-import Foundation
 import Argo
 import Curry
+import Foundation
 import Runes
 
 public struct Activity {
@@ -89,3 +89,32 @@ extension Activity.MemberData: Argo.Decodable {
       <*> json <|? "reward_id"
   }
 }
+//
+//private func decodeToGraphComment(_ json: JSON?) -> Decoded<Comment> {
+//  guard let jsonObj = json else {
+//    return .success(Comment)
+//  }
+//
+//  switch jsonObj {
+//  case let .string(comment):
+//    return .success(Comment(from: comment as! Decoder) ?? .unknown)
+//  default:
+//    return .failure(.typeMismatch(expected: "String", actual: jsonObj.description))
+//  }
+//}
+//
+//private func commentInfo(_ json: [String: JSON]) -> (Author, String, TimeInterval, Bool, Int) {
+//  guard let author = json["author"], let body = json["body"], let createdAt = json["createdAt"], let deleted = json["deleted"], let id = json["id"] else {
+//    return (.template, "", Date(timeIntervalSince1970: 1475361315).timeIntervalSince1970, false, 0)
+//  }
+//
+//  switch (author, body, createdAt, deleted, id) {
+//  case (author, .string(let body), .object(let createdAt), .bool(let deleted), .number(let id)):
+//    let authorObj =  author["author"] as [String: Any]
+//    return (authorObj, body, createdAt, deleted, id)
+//  default:
+//    <#code#>
+//  }
+//}
+
+

@@ -114,6 +114,7 @@ public enum GraphError: Error {
 public enum Query {
 
   case category(id: String, NonEmptySet<Category>)
+  case comment(NonEmptySet<Comment>)
   case project(slug: String, NonEmptySet<Project>)
   case rootCategories(NonEmptySet<Category>)
 
@@ -142,6 +143,16 @@ public enum Query {
 
   public enum Conversation {
     case id
+  }
+
+  public enum Comment {
+    case author
+    case body
+    case createdAt
+    case deleted
+    case id
+    case parentId
+    indirect case replies(Set<QueryArg<Never>>, NonEmptySet<Connection<Comment>>)
   }
 
   public enum Location {
@@ -205,6 +216,8 @@ extension Query: QueryType {
       return "project(slug: \"\(slug)\") { \(join(fields)) }"
     case let .rootCategories(fields):
       return "rootCategories { \(join(fields)) }"
+    case let .comment(fields):
+      return "comment { \(join(fields)) }"
     }
   }
 }
@@ -311,9 +324,9 @@ extension Query.Category.ProjectsConnection.Argument: CustomStringConvertible {
 extension Query.Project: QueryType {
   public var description: String {
     switch self {
-    case .id:                        return "id"
-    case .slug:                      return "slug"
-    case let .updates(args, fields): return "updates\(connection(args, fields))"
+    case .id:                         return "id"
+    case .slug:                       return "slug"
+    case let .updates(args, fields):  return "updates\(connection(args, fields))"
     }
   }
 }
@@ -330,6 +343,23 @@ extension Query.Project.Update: QueryType {
     }
   }
 }
+
+/// Comment
+
+extension Query.Comment: QueryType {
+  public var description: String {
+    switch self {
+    case .author:                    return "author"
+    case .body:                      return "body"
+    case .createdAt:                 return "createdAt"
+    case .deleted:                   return "deleted"
+    case .id:                        return "id"
+    case .parentId:                  return "parentId"
+    case let .replies(args, fields): return "replies" + connection(args, fields)
+    }
+  }
+}
+
 
 /// User
 

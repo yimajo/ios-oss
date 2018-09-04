@@ -37,7 +37,7 @@ CommentCellViewModelOutputs {
 
     self.body = comment.map { $0.body }
 
-    let isNotDeleted = comment.map { $0.deletedAt == nil }
+    let isNotDeleted = comment.map { $0.deleted } // graphql bool
 
     self.bodyColor = isNotDeleted.skipRepeats()
       .map { $0 ? .ksr_text_dark_grey_900 : .ksr_text_dark_grey_400 }

@@ -107,13 +107,13 @@ CommentsViewModelOutputs {
       requestFirstPageWith: requestFirstPageWith,
       requestNextPageWhen: isCloseToBottom,
       clearOnNewRequest: false,
-      valuesFromEnvelope: { $0.comments },
-      cursorFromEnvelope: { $0.urls.api.moreComments },
+      valuesFromEnvelope: { (envelope: CommentsEnvelope) in envelope.comments },
+      cursorFromEnvelope: { (envelope: CommentsEnvelope) in envelope.urls.api.moreComments },
       requestFromParams: { updateOrProject in
-        updateOrProject.ifLeft(AppEnvironment.current.apiService.fetchComments(project:),
-          ifRight: AppEnvironment.current.apiService.fetchComments(update:))
+        updateOrProject.ifLeft(AppEnvironment.current.apiService.fetchGraphComment(query: commentsQuery),
+          ifRight: AppEnvironment.current.apiService.fetchGraphComment(query: commentsQuery))
       },
-      requestFromCursor: { AppEnvironment.current.apiService.fetchComments(paginationUrl: $0) })
+      requestFromCursor: { AppEnvironment.current.apiService.fetchComment(paginationUrl: $0) })
 
     self.commentsAreLoading = isLoading
 
@@ -225,4 +225,27 @@ CommentsViewModelOutputs {
 private func canComment(onProject project: Project) -> Bool {
   return project.personalization.isBacking == true
     || project.memberData.permissions.contains(.comment)
+}
+
+public let commentsQuery = NonEmptySet(Query.comment(commentFields))
+
+private var commentFields: NonEmptySet<Query.Comment> {
+  return .id +| [
+    .body,
+    .createdAt,
+    .replies(
+      [],
+      .totalCount +| [
+        .nodes(
+          .id +| [
+            .author,
+            .body,
+            .createdAt,
+            .deleted,
+            .parentId
+          ]
+        )
+      ]
+    )
+  ]
 }

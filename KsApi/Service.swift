@@ -147,13 +147,13 @@ public struct Service: ServiceType {
     return requestPagination(url)
   }
 
-  public func fetchComments(project: Project) -> SignalProducer<CommentsEnvelope, ErrorEnvelope> {
-    return request(.projectComments(project))
-  }
+//  public func fetchComments(project: Project) -> SignalProducer<CommentsEnvelope, ErrorEnvelope> {
+//    return request(.projectComments(project))
+//  }
 
-  public func fetchComments(update: Update) -> SignalProducer<CommentsEnvelope, ErrorEnvelope> {
-    return request(.updateComments(update))
-  }
+//  public func fetchComments(update: Update) -> SignalProducer<CommentsEnvelope, ErrorEnvelope> {
+//    return request(.updateComments(update))
+//  }
 
   public func fetchConfig() -> SignalProducer<Config, ErrorEnvelope> {
     return request(.config)
@@ -192,6 +192,11 @@ public struct Service: ServiceType {
 
   public func fetchGraphCategory(query: NonEmptySet<Query>)
     -> SignalProducer<CategoryEnvelope, GraphError> {
+      return fetch(query: query)
+  }
+
+  public func fetchGraphComment(query: NonEmptySet<Query>)
+    -> SignalProducer<CommentsEnvelope, GraphError> {
       return fetch(query: query)
   }
 
@@ -363,7 +368,7 @@ public struct Service: ServiceType {
   public func postComment(_ body: String, toProject project: Project) ->
     SignalProducer<Comment, ErrorEnvelope> {
 
-      return request(.postProjectComment(project, body: body))
+    return request(.postProjectComment(project, body: body))
   }
 
   public func postComment(_ body: String, toUpdate update: Update) -> SignalProducer<Comment, ErrorEnvelope> {

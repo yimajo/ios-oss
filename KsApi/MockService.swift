@@ -27,6 +27,8 @@ internal struct MockService: ServiceType {
 
   fileprivate let fetchGraphCategoriesResponse: RootCategoriesEnvelope?
 
+  fileprivate let fetchGraphCommentsResponse: CommentsEnvelope?
+
   fileprivate let fetchCheckoutResponse: CheckoutEnvelope?
   fileprivate let fetchCheckoutError: ErrorEnvelope?
 
@@ -165,6 +167,7 @@ internal struct MockService: ServiceType {
                 fetchBackingResponse: Backing = .template,
                 backingUpdate: Backing = .template,
                 fetchGraphCategoriesResponse: RootCategoriesEnvelope? = nil,
+                fetchGraphCommentsResponse: CommentsEnvelope? = nil,
                 fetchCheckoutResponse: CheckoutEnvelope? = nil,
                 fetchCheckoutError: ErrorEnvelope? = nil,
                 fetchCommentsResponse: [Comment]? = nil,
@@ -265,6 +268,8 @@ internal struct MockService: ServiceType {
         .documentary
       ]
     )
+
+    self.fetchGraphCommentsResponse = fetchGraphCommentsResponse ?? .template
 
     self.fetchCheckoutResponse = fetchCheckoutResponse
     self.fetchCheckoutError = fetchCheckoutError
@@ -550,6 +555,15 @@ internal struct MockService: ServiceType {
     -> SignalProducer<CategoryEnvelope, GraphError> {
       return SignalProducer(value: CategoryEnvelope(node: .template |> Category.lens.id .~ "\(query.head)"))
   }
+
+  func fetchGraphComment(query: NonEmptySet<Query>) -> SignalProducer<CommentsEnvelope, GraphError> {
+    if let response = self.fetchGraphCommentsResponse {
+      return SignalProducer(value: response)
+    }
+
+    return .empty
+  }
+
 
   internal func fetchGraph<A>(query: NonEmptySet<Query>) -> SignalProducer<A, GraphError> where A: Decodable {
     return .empty
@@ -1246,6 +1260,7 @@ private extension MockService {
           fetchActivitiesError: $1.fetchActivitiesError,
           fetchBackingResponse: $1.fetchBackingResponse,
           fetchGraphCategoriesResponse: $1.fetchGraphCategoriesResponse,
+          fetchGraphCommentsResponse: $1.fetchGraphCommentsResponse,
           fetchCommentsResponse: $1.fetchCommentsResponse,
           fetchCommentsError: $1.fetchCommentsError,
           fetchConfigResponse: $1.fetchConfigResponse,

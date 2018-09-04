@@ -80,11 +80,11 @@ public protocol ServiceType {
   /// Fetch comments from a pagination url.
   func fetchComments(paginationUrl url: String) -> SignalProducer<CommentsEnvelope, ErrorEnvelope>
 
-  /// Fetch comments for a project.
-  func fetchComments(project: Project) -> SignalProducer<CommentsEnvelope, ErrorEnvelope>
-
-  /// Fetch comments for an update.
-  func fetchComments(update: Update) -> SignalProducer<CommentsEnvelope, ErrorEnvelope>
+//  /// Fetch comments for a project.
+//  func fetchComments(project: Project) -> SignalProducer<CommentsEnvelope, ErrorEnvelope>
+//
+//  /// Fetch comments for an update.
+//  func fetchComments(update: Update) -> SignalProducer<CommentsEnvelope, ErrorEnvelope>
 
   /// Fetch the config.
   func fetchConfig() -> SignalProducer<Config, ErrorEnvelope>
@@ -110,6 +110,10 @@ public protocol ServiceType {
   /// Fetch Category objects using graphQL.
   func fetchGraphCategory(query: NonEmptySet<Query>)
     -> SignalProducer<CategoryEnvelope, GraphError>
+
+  /// Fetch Comment objects using graphQL.
+  func fetchGraphComment(query: NonEmptySet<Query>)
+    -> SignalProducer<CommentsEnvelope, GraphError>
 
   /// Fetches all of the messages in a particular message thread.
   func fetchMessageThread(messageThreadId: Int)

@@ -5,3 +5,12 @@ extension User.Avatar {
     small: "http://www.kickstarter.com/small.jpg"
   )
 }
+
+extension Author.Avatar {
+  internal static let template = Author.Avatar(
+    large: "http://www.kickstarter.com/large.jpg",
+    medium: "http://www.kickstarter.com/medium.jpg",
+    small: "http://www.kickstarter.com/small.jpg"
+  )
+} // give this it's own file
+
