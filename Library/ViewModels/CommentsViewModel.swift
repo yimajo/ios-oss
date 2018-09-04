@@ -103,31 +103,42 @@ CommentsViewModelOutputs {
       projectOrUpdate.takeWhen(self.commentPostedProperty.signal)
     )
 
-    let (comments, isLoading, pageCount) = paginate(
-      requestFirstPageWith: requestFirstPageWith,
-      requestNextPageWhen: isCloseToBottom,
-      clearOnNewRequest: false,
-      valuesFromEnvelope: { $0.comments },
-      cursorFromEnvelope: { $0.urls.api.moreComments },
-      requestFromParams: { updateOrProject in
-        updateOrProject.ifLeft(AppEnvironment.current.apiService.fetchGraphComment(query: commentsQuery),
-          ifRight: AppEnvironment.current.apiService.fetchGraphComment(query: commentsQuery))
-      },
-      requestFromCursor: { AppEnvironment.current.apiService.fetchComments(paginationUrl: $0) })
+//    let (comment, isLoading, pageCount) = paginate(
+//      requestFirstPageWith: requestFirstPageWith,
+//      requestNextPageWhen: isCloseToBottom,
+//      clearOnNewRequest: false,
+//      valuesFromEnvelope: { $0.comments },
+//      cursorFromEnvelope: { $0.urls.api.moreComments },
+//      requestFromParams: { updateOrProject in
+//        updateOrProject.ifLeft(AppEnvironment.current.apiService.fetchGraphComment(query: commentsQuery),
+//          ifRight: AppEnvironment.current.apiService.fetchGraphComment(query: commentsQuery))
+//      },
+//      requestFromCursor: { AppEnvironment.current.apiService.fetchComments(paginationUrl: $0) })
 
-    self.commentsAreLoading = isLoading
+    let comments = self.viewDidLoadProperty.signal
+      .switchMap { _ in
+        AppEnvironment.current.apiService.fetchGraphComment(query: commentsQuery)
+          .ksr_delay(AppEnvironment.current.apiDelayInterval, on: AppEnvironment.current.scheduler)
+          .map { (envelope: CommentsEnvelope) in
+            envelope.comments }
+          .materialize()
+      }
+
+
+
+    self.commentsAreLoading = .empty
 
     let emptyStateFromAPI = Signal.combineLatest(comments, project, update, user)
-      .map { comments, project, update, user in (comments, project, update, user, comments.isEmpty) }
+      .map { (arg) -> ([Comment], Project, Update?, User?, Bool) in let (comments, project, update, user) = arg; return (comments.value!, project, update, user, (comments.value?.isEmpty)!) }
 
     let emptyStateFromCommentPosted = Signal.combineLatest(comments, project, update, user)
       .takeWhen(self.commentPostedProperty.signal)
-      .map { comments, projects, update, user in (comments, projects, update, user, false) }
+      .map { comments, projects, update, user in (comments.value!, projects, update, user, false) }
 
     self.dataSource = Signal.merge(emptyStateFromAPI, emptyStateFromCommentPosted)
 
     let userCanComment = Signal.combineLatest(comments, project)
-      .map { comments, project in !comments.isEmpty && canComment(onProject: project) }
+      .map { (arg) -> Bool in let (comments, project) = arg; return !(comments.value?.isEmpty)! && canComment(onProject: project) }
       .skipRepeats()
 
     self.commentBarButtonVisible = Signal.merge(
@@ -150,23 +161,6 @@ CommentsViewModelOutputs {
       .observeValues { project, update in
         AppEnvironment.current.koala.trackCommentsView(
           project: project, update: update, context: update == nil ? .project : .update
-        )
-    }
-
-    Signal.combineLatest(project, update)
-      .takeWhen(pageCount.skip(first: 1).filter { $0 == 1 })
-      .observeValues { project, update in
-        AppEnvironment.current.koala.trackLoadNewerComments(
-          project: project, update: update, context: update == nil ? .project : .update
-        )
-    }
-
-    Signal.combineLatest(project, update)
-      .takePairWhen(pageCount.skip(first: 1).filter { $0 > 1 })
-      .map(unpack)
-      .observeValues { project, update, pageCount in
-        AppEnvironment.current.koala.trackLoadOlderComments(
-          project: project, update: update, page: pageCount, context: update == nil ? .project : .update
         )
     }
   }
