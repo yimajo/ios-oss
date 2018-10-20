@@ -4,7 +4,7 @@ class LoginSignupUITests: XCTestCase {
   var app: XCUIApplication!
 
   override func setUp() {
-//    continueAfterFailure = false
+    continueAfterFailure = false
 
     app = XCUIApplication()
     app.launchArguments.append("--uitesting")
@@ -38,7 +38,7 @@ class LoginSignupUITests: XCTestCase {
     app.switchToTab(tab: .profile(loggedIn: false))
     app.findButton(identifier: "Log in with email")?.tap()
 
-    app.textFields["Email address"].typeText("ifbarrera23@gmail.com")
+    app.textFields["Email address"].typeText("mobile-app-test@gmail.com")
 
     let passwordField = app.secureTextFields["Password"]
     passwordField.tap()

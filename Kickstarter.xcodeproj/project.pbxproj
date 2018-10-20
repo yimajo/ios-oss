@@ -77,7 +77,6 @@
 		01F219561DC12BF7005DD2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F219521DC12697005DD2E4 /* LaunchScreen.storyboard */; };
 		01F547ED1D53994B000A98EF /* TabBarItemStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F547EC1D53994B000A98EF /* TabBarItemStyles.swift */; };
 		01FD71EC1D3808E500070BAC /* BarButtonItemStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FD71EB1D3808E500070BAC /* BarButtonItemStyles.swift */; };
-		1681DC12217A253D00351336 /* KickstarterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1681DC11217A253D00351336 /* KickstarterUITests.swift */; };
 		1681DC53217A262100351336 /* LoginSignupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1681DC52217A262100351336 /* LoginSignupUITests.swift */; };
 		1681DC55217A30B500351336 /* XCUIApplicationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1681DC54217A30B500351336 /* XCUIApplicationHelpers.swift */; };
 		59019FB61D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59019FB51D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift */; };
@@ -1778,7 +1777,6 @@
 		01F547EC1D53994B000A98EF /* TabBarItemStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemStyles.swift; sourceTree = "<group>"; };
 		01FD71EB1D3808E500070BAC /* BarButtonItemStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarButtonItemStyles.swift; sourceTree = "<group>"; };
 		1681DC0F217A253D00351336 /* KickstarterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KickstarterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1681DC11217A253D00351336 /* KickstarterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KickstarterUITests.swift; sourceTree = "<group>"; };
 		1681DC13217A253D00351336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1681DC52217A262100351336 /* LoginSignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupUITests.swift; sourceTree = "<group>"; };
 		1681DC54217A30B500351336 /* XCUIApplicationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIApplicationHelpers.swift; sourceTree = "<group>"; };
@@ -2897,21 +2895,13 @@
 			name = Library;
 			sourceTree = "<group>";
 		};
-		1681DC10217A253D00351336 /* KickstarterUITests */ = {
-			isa = PBXGroup;
-			children = (
-				1681DC11217A253D00351336 /* KickstarterUITests.swift */,
-				1681DC13217A253D00351336 /* Info.plist */,
-			);
-			path = KickstarterUITests;
-			sourceTree = "<group>";
-		};
-		1681DC51217A25E800351336 /* UI Tests */ = {
+		1681DC10217A253D00351336 /* UI tests */ = {
 			isa = PBXGroup;
 			children = (
 				1681DC52217A262100351336 /* LoginSignupUITests.swift */,
+				1681DC13217A253D00351336 /* Info.plist */,
 			);
-			path = "UI Tests";
+			path = "UI tests";
 			sourceTree = "<group>";
 		};
 		775DFADB2162A56D00620CED /* mutations */ = {
@@ -3672,7 +3662,6 @@
 				0127FC511C98BFD000E335C6 /* Library */,
 				A7A5F8221D11ECF60036139A /* Locales */,
 				A7ED20201E83237F00BFFA01 /* TestHelpers */,
-				1681DC51217A25E800351336 /* UI Tests */,
 				A751A51A1C85EAD8009C5DEA /* ViewModels */,
 				A751A51B1C85EAD8009C5DEA /* Views */,
 			);
@@ -3693,7 +3682,7 @@
 			children = (
 				A7C795C71C873B800081977F /* Kickstarter-iOS.playground */,
 				802800561C88F62500141235 /* Configs */,
-				1681DC10217A253D00351336 /* KickstarterUITests */,
+				1681DC10217A253D00351336 /* UI tests */,
 				A7E06DBC1C5C027800EBDCC2 /* Frameworks */,
 				A7D1F9461C850B7C000D41D5 /* Kickstarter-iOS */,
 				D01587511EEB2DE4006E7684 /* KsApi */,
@@ -5447,7 +5436,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1681DC12217A253D00351336 /* KickstarterUITests.swift in Sources */,
 				1681DC55217A30B500351336 /* XCUIApplicationHelpers.swift in Sources */,
 				1681DC53217A262100351336 /* LoginSignupUITests.swift in Sources */,
 			);
