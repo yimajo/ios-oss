@@ -52,6 +52,15 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
       }
     #endif
 
+    if CommandLine.arguments.contains("--uitesting") {
+      print("🔵 Resetting environment for UITesting...")
+      AppEnvironment.updateServerConfig(ServerConfig.config(for: EnvironmentType.staging))
+      AppEnvironment.logout()
+      PushNotificationDialog.resetAllContexts()
+
+      NotificationCenter.default.post(.init(name: .ksr_sessionEnded, object: nil))
+    }
+
     self.viewModel.outputs.updateCurrentUserInEnvironment
       .observeForUI()
       .observeValues { [weak self] user in

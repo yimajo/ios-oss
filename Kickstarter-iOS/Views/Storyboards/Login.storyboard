@@ -297,6 +297,7 @@
                                                                                     </label>
                                                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vep-Pb-kEj">
                                                                                         <rect key="frame" x="299" y="12" width="51" height="31"/>
+                                                                                        <accessibility key="accessibilityConfiguration" label="Newsletter switch"/>
                                                                                         <color key="onTintColor" red="0.01176470588" green="0.45098039220000002" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <connections>
                                                                                             <action selector="weeklyNewsletterChanged:" destination="NFm-bM-Ukr" eventType="valueChanged" id="fbw-oz-WLe"/>

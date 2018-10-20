@@ -1820,7 +1820,7 @@ public final class Koala {
     props["screen_width"] = UInt(self.screen.bounds.width)
     props["screen_height"] = UInt(self.screen.bounds.height)
     props["device_orientation"] = Koala.deviceOrientation
-    props["preferred_content_size_category"] = UIApplication.shared.preferredContentSizeCategory
+//    props["preferred_content_size_category"] = UIApplication.shared.preferredContentSizeCategory
 
     props["mp_lib"] = "kickstarter_ios"
     props["koala_lib"] = "kickstarter_ios"

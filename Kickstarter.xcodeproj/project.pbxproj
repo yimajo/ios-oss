@@ -77,6 +77,9 @@
 		01F219561DC12BF7005DD2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F219521DC12697005DD2E4 /* LaunchScreen.storyboard */; };
 		01F547ED1D53994B000A98EF /* TabBarItemStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F547EC1D53994B000A98EF /* TabBarItemStyles.swift */; };
 		01FD71EC1D3808E500070BAC /* BarButtonItemStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FD71EB1D3808E500070BAC /* BarButtonItemStyles.swift */; };
+		1681DC12217A253D00351336 /* KickstarterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1681DC11217A253D00351336 /* KickstarterUITests.swift */; };
+		1681DC53217A262100351336 /* LoginSignupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1681DC52217A262100351336 /* LoginSignupUITests.swift */; };
+		1681DC55217A30B500351336 /* XCUIApplicationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1681DC54217A30B500351336 /* XCUIApplicationHelpers.swift */; };
 		59019FB61D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59019FB51D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift */; };
 		59019FBA1D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59019FB81D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift */; };
 		59322F071CD27B1000C90CC6 /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59322F051CD27B1000C90CC6 /* ProfileDataSource.swift */; };
@@ -1047,6 +1050,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1681DC14217A253D00351336 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7E06C711C5A6EB300EBDCC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7D1F9441C850B7C000D41D5;
+			remoteInfo = "Kickstarter-iOS";
+		};
 		80388E201F21429100B2EE88 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7E06C711C5A6EB300EBDCC2 /* Project object */;
@@ -1767,6 +1777,11 @@
 		01F219521DC12697005DD2E4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01F547EC1D53994B000A98EF /* TabBarItemStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemStyles.swift; sourceTree = "<group>"; };
 		01FD71EB1D3808E500070BAC /* BarButtonItemStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarButtonItemStyles.swift; sourceTree = "<group>"; };
+		1681DC0F217A253D00351336 /* KickstarterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KickstarterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1681DC11217A253D00351336 /* KickstarterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KickstarterUITests.swift; sourceTree = "<group>"; };
+		1681DC13217A253D00351336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1681DC52217A262100351336 /* LoginSignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupUITests.swift; sourceTree = "<group>"; };
+		1681DC54217A30B500351336 /* XCUIApplicationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIApplicationHelpers.swift; sourceTree = "<group>"; };
 		3D1363951F0191FB00B53420 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		59019FB51D21A47700EAEC9D /* DashboardReferrerRowStackViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardReferrerRowStackViewViewModel.swift; sourceTree = "<group>"; };
 		59019FB81D21ABD200EAEC9D /* DashboardReferrerRowStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardReferrerRowStackView.swift; sourceTree = "<group>"; };
@@ -2712,6 +2727,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1681DC0C217A253D00351336 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A75511381C8642B3005355CF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2873,6 +2895,23 @@
 				775DFAD621627D9C00620CED /* GraphError+LocalizedDescription.swift */,
 			);
 			name = Library;
+			sourceTree = "<group>";
+		};
+		1681DC10217A253D00351336 /* KickstarterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1681DC11217A253D00351336 /* KickstarterUITests.swift */,
+				1681DC13217A253D00351336 /* Info.plist */,
+			);
+			path = KickstarterUITests;
+			sourceTree = "<group>";
+		};
+		1681DC51217A25E800351336 /* UI Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1681DC52217A262100351336 /* LoginSignupUITests.swift */,
+			);
+			path = "UI Tests";
 			sourceTree = "<group>";
 		};
 		775DFADB2162A56D00620CED /* mutations */ = {
@@ -3633,6 +3672,7 @@
 				0127FC511C98BFD000E335C6 /* Library */,
 				A7A5F8221D11ECF60036139A /* Locales */,
 				A7ED20201E83237F00BFFA01 /* TestHelpers */,
+				1681DC51217A25E800351336 /* UI Tests */,
 				A751A51A1C85EAD8009C5DEA /* ViewModels */,
 				A751A51B1C85EAD8009C5DEA /* Views */,
 			);
@@ -3653,6 +3693,7 @@
 			children = (
 				A7C795C71C873B800081977F /* Kickstarter-iOS.playground */,
 				802800561C88F62500141235 /* Configs */,
+				1681DC10217A253D00351336 /* KickstarterUITests */,
 				A7E06DBC1C5C027800EBDCC2 /* Frameworks */,
 				A7D1F9461C850B7C000D41D5 /* Kickstarter-iOS */,
 				D01587511EEB2DE4006E7684 /* KsApi */,
@@ -3677,6 +3718,7 @@
 				A7BA54321E1E493600E54377 /* LiveStreamTests.xctest */,
 				D01587501EEB2DE4006E7684 /* KsApi.framework */,
 				D01587581EEB2DE4006E7684 /* KsApiTests.xctest */,
+				1681DC0F217A253D00351336 /* KickstarterUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3784,6 +3826,7 @@
 			children = (
 				A7ED20211E83237F00BFFA01 /* Combos.swift */,
 				A7ED20221E83237F00BFFA01 /* TraitController.swift */,
+				1681DC54217A30B500351336 /* XCUIApplicationHelpers.swift */,
 			);
 			path = TestHelpers;
 			sourceTree = "<group>";
@@ -4414,6 +4457,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1681DC0E217A253D00351336 /* KickstarterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1681DC50217A253D00351336 /* Build configuration list for PBXNativeTarget "KickstarterUITests" */;
+			buildPhases = (
+				1681DC0B217A253D00351336 /* Sources */,
+				1681DC0C217A253D00351336 /* Frameworks */,
+				1681DC0D217A253D00351336 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1681DC15217A253D00351336 /* PBXTargetDependency */,
+			);
+			name = KickstarterUITests;
+			productName = KickstarterUITests;
+			productReference = 1681DC0F217A253D00351336 /* KickstarterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		A755113B1C8642B3005355CF /* Library-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A75511591C8642B3005355CF /* Build configuration list for PBXNativeTarget "Library-iOS" */;
@@ -4606,10 +4667,16 @@
 		A7E06C711C5A6EB300EBDCC2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Kickstarter;
 				TargetAttributes = {
+					1681DC0E217A253D00351336 = {
+						CreatedOnToolsVersion = 10.0;
+						DevelopmentTeam = 48YBP49Y5N;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A7D1F9441C850B7C000D41D5;
+					};
 					A755113B1C8642B3005355CF = {
 						CreatedOnToolsVersion = 7.2.1;
 						LastSwiftMigration = 1000;
@@ -4743,6 +4810,7 @@
 				D01587571EEB2DE4006E7684 /* KsApiTests */,
 				A7BA54281E1E493500E54377 /* LiveStream */,
 				A7BA54311E1E493600E54377 /* LiveStreamTests */,
+				1681DC0E217A253D00351336 /* KickstarterUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -5199,6 +5267,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1681DC0D217A253D00351336 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A755113A1C8642B3005355CF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5368,6 +5443,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1681DC0B217A253D00351336 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1681DC12217A253D00351336 /* KickstarterUITests.swift in Sources */,
+				1681DC55217A30B500351336 /* XCUIApplicationHelpers.swift in Sources */,
+				1681DC53217A262100351336 /* LoginSignupUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A75511371C8642B3005355CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6320,6 +6405,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1681DC15217A253D00351336 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7D1F9441C850B7C000D41D5 /* Kickstarter-iOS */;
+			targetProxy = 1681DC14217A253D00351336 /* PBXContainerItemProxy */;
+		};
 		80388E211F21429100B2EE88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A7BA54281E1E493500E54377 /* LiveStream */;
@@ -6458,6 +6548,114 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1681DC16217A253D00351336 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = KickstarterUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kickstarter.kickstarter.KickstarterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "473bb871-5e2a-4937-8bd9-7950c5281b39";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Kickstarter-iOS";
+			};
+			name = Debug;
+		};
+		1681DC17217A253D00351336 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = KickstarterUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kickstarter.kickstarter.KickstarterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "473bb871-5e2a-4937-8bd9-7950c5281b39";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Kickstarter-iOS";
+			};
+			name = Release;
+		};
+		1681DC18217A253D00351336 /* Hockey Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = KickstarterUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kickstarter.kickstarter.KickstarterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "473bb871-5e2a-4937-8bd9-7950c5281b39";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Kickstarter-iOS";
+			};
+			name = "Hockey Beta";
+		};
+		1681DC19217A253D00351336 /* Hockey Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = KickstarterUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kickstarter.kickstarter.KickstarterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "473bb871-5e2a-4937-8bd9-7950c5281b39";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Kickstarter-iOS";
+			};
+			name = "Hockey Alpha";
+		};
 		A745D1D41CAAD0A400C12802 /* Hockey Beta */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 802800571C88F64D00141235 /* Base.xcconfig */;
@@ -7679,6 +7877,17 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1681DC50217A253D00351336 /* Build configuration list for PBXNativeTarget "KickstarterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1681DC16217A253D00351336 /* Debug */,
+				1681DC17217A253D00351336 /* Release */,
+				1681DC18217A253D00351336 /* Hockey Beta */,
+				1681DC19217A253D00351336 /* Hockey Alpha */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A75511591C8642B3005355CF /* Build configuration list for PBXNativeTarget "Library-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
