@@ -57,9 +57,9 @@ class LoginSignupUITests: XCTestCase {
 
       app.buttons["Allow"].tap()
     }
-    
+
     let profile = app.navigationBars["Profile"]
-    
+
     XCTAssertTrue(profile.waitForExistence(timeout: 1.0), "Error logging in, Profile VC does not exist")
   }
 
