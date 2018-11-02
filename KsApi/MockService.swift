@@ -143,11 +143,11 @@ public struct MockService: ServiceType {
   fileprivate let updateUserSelfError: ErrorEnvelope?
 
   public init(appId: String = "com.kickstarter.kickstarter.mock",
-                serverConfig: ServerConfigType,
-                oauthToken: OauthTokenAuthType?,
-                language: String,
-                currency: String,
-                buildVersion: String = "1") {
+              serverConfig: ServerConfigType,
+              oauthToken: OauthTokenAuthType?,
+              language: String,
+              currency: String,
+              buildVersion: String = "1") {
 
     self.init(
       appId: appId,
@@ -1132,10 +1132,10 @@ public struct MockService: ServiceType {
   }
 
   public func signup(name: String,
-                       email: String,
-                       password: String,
-                       passwordConfirmation: String,
-                       sendNewsletters: Bool) -> SignalProducer<AccessTokenEnvelope, ErrorEnvelope> {
+                     email: String,
+                     password: String,
+                     passwordConfirmation: String,
+                     sendNewsletters: Bool) -> SignalProducer<AccessTokenEnvelope, ErrorEnvelope> {
     if let error = signupError {
       return SignalProducer(error: error)
     } else if let accessTokenEnvelope = signupResponse {
