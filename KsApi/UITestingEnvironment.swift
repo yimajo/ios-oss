@@ -10,6 +10,7 @@ public struct UITestingEnvironment {
 
   public static var calendar: Calendar = {
     var calendar = Calendar(identifier: .gregorian)
+    //swiftlint:disable force_unwrapping
     calendar.timeZone = TimeZone(identifier: "GMT")!
 
     return calendar
