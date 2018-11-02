@@ -26,21 +26,21 @@ public struct MockLiveStreamService: LiveStreamServiceProtocol {
   }
 
   public init(chatMessagesAddedResult: Result<[LiveStreamChatMessage], LiveApiError>? = nil,
-                greenRoomOffStatusResult: Result<[Bool], LiveApiError>? = nil,
-                fetchEventResult: Result<LiveStreamEvent, LiveApiError>? = nil,
-                fetchEventsForProjectResult: Result<LiveStreamEventsEnvelope, LiveApiError>? = nil,
-                fetchEventsResult: Result<[LiveStreamEvent], LiveApiError>? = nil,
-                hlsUrlResult: Result<[String], LiveApiError>? = nil,
-                incrementNumberOfPeopleWatchingResult: Result<[()], LiveApiError>? = nil,
-                initialChatMessagesResult: Result<[[LiveStreamChatMessage]], LiveApiError>? = nil,
-                numberOfPeopleWatchingResult: Result<[Int], LiveApiError>? = nil,
-                numberOfPeopleWatchingResultNever: Bool? = nil,
-                scaleNumberOfPeopleWatchingResult: Result<[Int], LiveApiError>? = nil,
-                scaleNumberOfPeopleWatchingResultNever: Bool? = nil,
-                sendChatMessageResult: Result<[()], LiveApiError>? = nil,
-                signInToFirebaseAnonymouslyResult: Result<[String], LiveApiError>? = nil,
-                signInToFirebaseWithCustomTokenResult: Result<[String], LiveApiError>? = nil,
-                subscribeToResult: Result<LiveStreamSubscribeEnvelope, LiveApiError>? = nil) {
+              greenRoomOffStatusResult: Result<[Bool], LiveApiError>? = nil,
+              fetchEventResult: Result<LiveStreamEvent, LiveApiError>? = nil,
+              fetchEventsForProjectResult: Result<LiveStreamEventsEnvelope, LiveApiError>? = nil,
+              fetchEventsResult: Result<[LiveStreamEvent], LiveApiError>? = nil,
+              hlsUrlResult: Result<[String], LiveApiError>? = nil,
+              incrementNumberOfPeopleWatchingResult: Result<[()], LiveApiError>? = nil,
+              initialChatMessagesResult: Result<[[LiveStreamChatMessage]], LiveApiError>? = nil,
+              numberOfPeopleWatchingResult: Result<[Int], LiveApiError>? = nil,
+              numberOfPeopleWatchingResultNever: Bool? = nil,
+              scaleNumberOfPeopleWatchingResult: Result<[Int], LiveApiError>? = nil,
+              scaleNumberOfPeopleWatchingResultNever: Bool? = nil,
+              sendChatMessageResult: Result<[()], LiveApiError>? = nil,
+              signInToFirebaseAnonymouslyResult: Result<[String], LiveApiError>? = nil,
+              signInToFirebaseWithCustomTokenResult: Result<[String], LiveApiError>? = nil,
+              subscribeToResult: Result<LiveStreamSubscribeEnvelope, LiveApiError>? = nil) {
     self.chatMessagesAddedResult = chatMessagesAddedResult
     self.initialChatMessagesResult = initialChatMessagesResult
     self.greenRoomOffStatusResult = greenRoomOffStatusResult
