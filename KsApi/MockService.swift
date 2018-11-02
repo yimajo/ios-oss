@@ -4,13 +4,13 @@ import Prelude
 import ReactiveSwift
 import Result
 
-internal struct MockService: ServiceType {
-  internal let appId: String
-  internal let serverConfig: ServerConfigType
-  internal let oauthToken: OauthTokenAuthType?
-  internal let language: String
-  internal let currency: String
-  internal let buildVersion: String
+public struct MockService: ServiceType {
+  public let appId: String
+  public let serverConfig: ServerConfigType
+  public let oauthToken: OauthTokenAuthType?
+  public let language: String
+  public let currency: String
+  public let buildVersion: String
 
   fileprivate let changeCurrencyError: GraphError?
 
@@ -142,7 +142,7 @@ internal struct MockService: ServiceType {
 
   fileprivate let updateUserSelfError: ErrorEnvelope?
 
-  internal init(appId: String = "com.kickstarter.kickstarter.mock",
+  public init(appId: String = "com.kickstarter.kickstarter.mock",
                 serverConfig: ServerConfigType,
                 oauthToken: OauthTokenAuthType?,
                 language: String,
@@ -160,16 +160,14 @@ internal struct MockService: ServiceType {
     )
   }
 
-  internal init(appId: String = "com.kickstarter.kickstarter.mock",
+  public init(appId: String = "com.kickstarter.kickstarter.mock",
                 serverConfig: ServerConfigType = ServerConfig.production,
                 oauthToken: OauthTokenAuthType? = nil,
                 language: String = "en",
                 currency: String = "USD",
                 buildVersion: String = "1",
                 changeEmailError: GraphError? = nil,
-                changeEmailResponse: UserEnvelope<GraphUserEmail>? = UserEnvelope<GraphUserEmail>(
-                                                                       me: .template
-                                                                     ),
+                changeEmailResponse: UserEnvelope<GraphUserEmail>? = nil,
                 changePasswordError: GraphError? = nil,
                 changeCurrencyError: GraphError? = nil,
                 changePaymentMethodResult: Result<ChangePaymentMethodEnvelope, ErrorEnvelope>? = nil,
@@ -178,8 +176,8 @@ internal struct MockService: ServiceType {
                 facebookConnectError: ErrorEnvelope? = nil,
                 fetchActivitiesResponse: [Activity]? = nil,
                 fetchActivitiesError: ErrorEnvelope? = nil,
-                fetchBackingResponse: Backing = .template,
-                backingUpdate: Backing = .template,
+                fetchBackingResponse: Backing? = nil,
+                backingUpdate: Backing? = nil,
                 fetchGraphCategoriesResponse: RootCategoriesEnvelope? = nil,
                 fetchCheckoutResponse: CheckoutEnvelope? = nil,
                 fetchCheckoutError: ErrorEnvelope? = nil,
@@ -228,7 +226,7 @@ internal struct MockService: ServiceType {
                 fetchSurveyResponseError: ErrorEnvelope? = nil,
                 fetchUnansweredSurveyResponsesResponse: [SurveyResponse] = [],
                 fetchUpdateCommentsResponse: Result<CommentsEnvelope, ErrorEnvelope>? = nil,
-                fetchUpdateResponse: Update = .template,
+                fetchUpdateResponse: Update? = nil,
                 fetchUserSelfError: ErrorEnvelope? = nil,
                 postCommentResponse: Comment? = nil,
                 postCommentError: ErrorEnvelope? = nil,
@@ -240,7 +238,7 @@ internal struct MockService: ServiceType {
                 resetPasswordError: ErrorEnvelope? = nil,
                 signupResponse: AccessTokenEnvelope? = nil,
                 signupError: ErrorEnvelope? = nil,
-                submitApplePayResponse: SubmitApplePayEnvelope = .template,
+                submitApplePayResponse: SubmitApplePayEnvelope? = nil,
                 toggleStarResponse: StarEnvelope? = nil,
                 toggleStarError: ErrorEnvelope? = nil,
                 unfollowFriendError: ErrorEnvelope? = nil,
@@ -278,9 +276,8 @@ internal struct MockService: ServiceType {
 
     self.fetchActivitiesError = fetchActivitiesError
 
-    self.fetchBackingResponse = fetchBackingResponse
-
-    self.backingUpdate = backingUpdate
+    self.fetchBackingResponse = fetchBackingResponse ?? .template
+    self.backingUpdate = backingUpdate ?? .template
 
     self.fetchGraphCategoriesResponse = fetchGraphCategoriesResponse ?? (.template
       |> RootCategoriesEnvelope.lens.categories .~ [
@@ -374,7 +371,7 @@ internal struct MockService: ServiceType {
 
     self.fetchUpdateCommentsResponse = fetchUpdateCommentsResponse
 
-    self.fetchUpdateResponse = fetchUpdateResponse
+    self.fetchUpdateResponse = fetchUpdateResponse ?? .template
 
     self.fetchUserProjectsBackedResponse = fetchUserProjectsBackedResponse
     self.fetchUserProjectsBackedError = fetchUserProjectsBackedError
@@ -411,7 +408,7 @@ internal struct MockService: ServiceType {
 
     self.signupError = signupError
 
-    self.submitApplePayResponse = submitApplePayResponse
+    self.submitApplePayResponse = submitApplePayResponse ?? .template
 
     self.toggleStarResponse = toggleStarResponse
     self.toggleStarError = toggleStarError
@@ -429,7 +426,7 @@ internal struct MockService: ServiceType {
     self.updateUserSelfError = updateUserSelfError
   }
 
-  internal func changeEmail(input: ChangeEmailInput) ->
+  public func changeEmail(input: ChangeEmailInput) ->
     SignalProducer<GraphMutationEmptyResponseEnvelope, GraphError> {
 
       if let error = self.changeEmailError {
@@ -439,7 +436,7 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: GraphMutationEmptyResponseEnvelope())
   }
 
-  internal func createPledge(project: Project,
+  public func createPledge(project: Project,
                              amount: Double,
                              reward: Reward?,
                              shippingLocation: Location?,
@@ -452,7 +449,7 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: self.createPledgeResult?.value ?? .template)
   }
 
-  internal func facebookConnect(facebookAccessToken token: String)
+  public func facebookConnect(facebookAccessToken token: String)
     -> SignalProducer<User, ErrorEnvelope> {
 
       if let response = facebookConnectResponse {
@@ -468,7 +465,7 @@ internal struct MockService: ServiceType {
       )
   }
 
-  internal func changePassword(input: ChangePasswordInput) ->
+  public func changePassword(input: ChangePasswordInput) ->
     SignalProducer<GraphMutationEmptyResponseEnvelope, GraphError> {
       if let error = self.changePasswordError {
         return SignalProducer(error: error)
@@ -477,7 +474,7 @@ internal struct MockService: ServiceType {
       }
   }
 
-  internal func changeCurrency(input: ChangeCurrencyInput) ->
+  public func changeCurrency(input: ChangeCurrencyInput) ->
    SignalProducer<GraphMutationEmptyResponseEnvelope, GraphError> {
       if let error = self.changeCurrencyError {
         return SignalProducer(error: error)
@@ -486,7 +483,7 @@ internal struct MockService: ServiceType {
       }
   }
 
-  internal func fetchCheckout(checkoutUrl url: String) -> SignalProducer<CheckoutEnvelope, ErrorEnvelope> {
+  public func fetchCheckout(checkoutUrl url: String) -> SignalProducer<CheckoutEnvelope, ErrorEnvelope> {
     if let response = fetchCheckoutResponse {
       return SignalProducer(value: response)
     } else if let error = fetchCheckoutError {
@@ -496,7 +493,7 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: .template)
   }
 
-  internal func fetchComments(project: Project) -> SignalProducer<CommentsEnvelope, ErrorEnvelope> {
+  public func fetchComments(project: Project) -> SignalProducer<CommentsEnvelope, ErrorEnvelope> {
 
     if let error = fetchCommentsError {
       return SignalProducer(error: error)
@@ -515,7 +512,7 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  internal func fetchComments(paginationUrl url: String) -> SignalProducer<CommentsEnvelope, ErrorEnvelope> {
+  public func fetchComments(paginationUrl url: String) -> SignalProducer<CommentsEnvelope, ErrorEnvelope> {
     if let error = fetchCommentsError {
       return SignalProducer(error: error)
     } else if let comments = fetchCommentsResponse {
@@ -533,7 +530,7 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  internal func fetchComments(update: Update) -> SignalProducer<CommentsEnvelope, ErrorEnvelope> {
+  public func fetchComments(update: Update) -> SignalProducer<CommentsEnvelope, ErrorEnvelope> {
 
     if let error = fetchUpdateCommentsResponse?.error {
       return SignalProducer(error: error)
@@ -543,12 +540,12 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  internal func fetchConfig() -> SignalProducer<Config, ErrorEnvelope> {
+  public func fetchConfig() -> SignalProducer<Config, ErrorEnvelope> {
     guard let config = self.fetchConfigResponse else { return .empty }
     return SignalProducer(value: config)
   }
 
-  internal func fetchFriends() -> SignalProducer<FindFriendsEnvelope, ErrorEnvelope> {
+  public func fetchFriends() -> SignalProducer<FindFriendsEnvelope, ErrorEnvelope> {
     if let response = fetchFriendsResponse {
       return SignalProducer(value: response)
     } else if let error = fetchFriendsError {
@@ -558,12 +555,12 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: .template)
   }
 
-  internal func fetchFriends(paginationUrl: String)
+  public func fetchFriends(paginationUrl: String)
     -> SignalProducer<FindFriendsEnvelope, ErrorEnvelope> {
     return self.fetchFriends()
   }
 
-  internal func fetchFriendStats() -> SignalProducer<FriendStatsEnvelope, ErrorEnvelope> {
+  public func fetchFriendStats() -> SignalProducer<FriendStatsEnvelope, ErrorEnvelope> {
     if let response = fetchFriendStatsResponse {
       return SignalProducer(value: response)
     } else if let error = fetchFriendStatsError {
@@ -572,18 +569,18 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: .template)
   }
 
-  internal func followAllFriends() -> SignalProducer<VoidEnvelope, ErrorEnvelope> {
+  public func followAllFriends() -> SignalProducer<VoidEnvelope, ErrorEnvelope> {
     return SignalProducer(value: VoidEnvelope())
   }
 
-  internal func exportData() -> SignalProducer<VoidEnvelope, ErrorEnvelope> {
+  public func exportData() -> SignalProducer<VoidEnvelope, ErrorEnvelope> {
     if let error = exportDataError {
       return SignalProducer(error: error)
     }
     return SignalProducer(value: VoidEnvelope())
   }
 
-  internal func followFriend(userId id: Int) -> SignalProducer<User, ErrorEnvelope> {
+  public func followFriend(userId id: Int) -> SignalProducer<User, ErrorEnvelope> {
     if let error = followFriendError {
       return SignalProducer(error: error)
     }
@@ -595,7 +592,7 @@ internal struct MockService: ServiceType {
     )
   }
 
-  internal func fetchGraphCategories(query: NonEmptySet<Query>)
+  public func fetchGraphCategories(query: NonEmptySet<Query>)
     -> SignalProducer<RootCategoriesEnvelope, GraphError> {
     if let response = self.fetchGraphCategoriesResponse {
       return SignalProducer(value: response)
@@ -603,26 +600,26 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  internal func fetchGraphCategory(query: NonEmptySet<Query>)
+  public func fetchGraphCategory(query: NonEmptySet<Query>)
     -> SignalProducer<CategoryEnvelope, GraphError> {
       return SignalProducer(value: CategoryEnvelope(node: .template |> Category.lens.id .~ "\(query.head)"))
   }
 
-  internal func fetchGraphUserEmail(query: NonEmptySet<Query>)
+  public func fetchGraphUserEmail(query: NonEmptySet<Query>)
     -> SignalProducer<UserEnvelope<GraphUserEmail>, GraphError> {
       return SignalProducer(value: changeEmailResponse ?? UserEnvelope<GraphUserEmail>(me: .template))
   }
 
-  internal func fetchGraphCurrency(query: NonEmptySet<Query>)
+  public func fetchGraphCurrency(query: NonEmptySet<Query>)
     -> SignalProducer<UserEnvelope<UserCurrency>, GraphError> {
       return SignalProducer(value: UserEnvelope<UserCurrency>(me: UserCurrency.template))
   }
 
-  internal func fetchGraph<A>(query: NonEmptySet<Query>) -> SignalProducer<A, GraphError> where A: Decodable {
+  public func fetchGraph<A>(query: NonEmptySet<Query>) -> SignalProducer<A, GraphError> where A: Decodable {
     return .empty
   }
 
-  internal func unfollowFriend(userId id: Int) -> SignalProducer<VoidEnvelope, ErrorEnvelope> {
+  public func unfollowFriend(userId id: Int) -> SignalProducer<VoidEnvelope, ErrorEnvelope> {
     if let error = unfollowFriendError {
       return SignalProducer(error: error)
     }
@@ -630,15 +627,15 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: VoidEnvelope())
   }
 
-  internal func login(_ oauthToken: OauthTokenAuthType) -> MockService {
+  public func login(_ oauthToken: OauthTokenAuthType) -> MockService {
     return self |> MockService.lens.oauthToken .~ oauthToken
   }
 
-  internal func logout() -> MockService {
+  public func logout() -> MockService {
     return self |> MockService.lens.oauthToken .~ nil
   }
 
-  internal func fetchActivities(count: Int?) -> SignalProducer<ActivityEnvelope, ErrorEnvelope> {
+  public func fetchActivities(count: Int?) -> SignalProducer<ActivityEnvelope, ErrorEnvelope> {
 
     if let error = fetchActivitiesError {
       return SignalProducer(error: error)
@@ -657,12 +654,12 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  internal func fetchActivities(paginationUrl: String)
+  public func fetchActivities(paginationUrl: String)
     -> SignalProducer<ActivityEnvelope, ErrorEnvelope> {
       return self.fetchActivities(count: nil)
   }
 
-  func fetchBacking(forProject project: Project, forUser user: User)
+  public func fetchBacking(forProject project: Project, forUser user: User)
     -> SignalProducer<Backing, ErrorEnvelope> {
 
     return SignalProducer(
@@ -673,7 +670,7 @@ internal struct MockService: ServiceType {
     )
   }
 
-  func backingUpdate(forProject project: Project, forUser user: User, received: Bool)
+  public func backingUpdate(forProject project: Project, forUser user: User, received: Bool)
     -> SignalProducer<Backing, ErrorEnvelope> {
 
       return SignalProducer(
@@ -685,7 +682,7 @@ internal struct MockService: ServiceType {
       )
   }
 
-  internal func fetchDiscovery(paginationUrl: String)
+  public func fetchDiscovery(paginationUrl: String)
     -> SignalProducer<DiscoveryEnvelope, ErrorEnvelope> {
 
       if let error = fetchDiscoveryError {
@@ -703,7 +700,7 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: envelope)
   }
 
-  internal func fetchDiscovery(params: DiscoveryParams)
+  public func fetchDiscovery(params: DiscoveryParams)
     -> SignalProducer<DiscoveryEnvelope, ErrorEnvelope> {
 
       if let error = fetchDiscoveryError {
@@ -720,7 +717,7 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: envelope)
   }
 
-  internal func fetchMessageThread(messageThreadId: Int)
+  public func fetchMessageThread(messageThreadId: Int)
     -> SignalProducer<MessageThreadEnvelope, ErrorEnvelope> {
       if let error = self.fetchMessageThreadResult?.error {
         return SignalProducer(error: error)
@@ -739,7 +736,7 @@ internal struct MockService: ServiceType {
       )
   }
 
-  internal func fetchMessageThread(backing: Backing)
+  public func fetchMessageThread(backing: Backing)
     -> SignalProducer<MessageThreadEnvelope?, ErrorEnvelope> {
       if let error = self.fetchMessageThreadResult?.error {
         return SignalProducer(error: error)
@@ -762,7 +759,7 @@ internal struct MockService: ServiceType {
       }
   }
 
-  internal func fetchMessageThreads(mailbox: Mailbox, project: Project?)
+  public func fetchMessageThreads(mailbox: Mailbox, project: Project?)
     -> SignalProducer<MessageThreadsEnvelope, ErrorEnvelope> {
 
       return SignalProducer(value:
@@ -777,7 +774,7 @@ internal struct MockService: ServiceType {
       )
   }
 
-  internal func fetchMessageThreads(paginationUrl: String)
+  public func fetchMessageThreads(paginationUrl: String)
     -> SignalProducer<MessageThreadsEnvelope, ErrorEnvelope> {
 
       return SignalProducer(value:
@@ -792,11 +789,11 @@ internal struct MockService: ServiceType {
       )
   }
 
-  internal func fetchProjectNotifications() -> SignalProducer<[ProjectNotification], ErrorEnvelope> {
+  public func fetchProjectNotifications() -> SignalProducer<[ProjectNotification], ErrorEnvelope> {
     return SignalProducer(value: self.fetchProjectNotificationsResponse)
   }
 
-  internal func fetchProject(param: Param) -> SignalProducer<Project, ErrorEnvelope> {
+  public func fetchProject(param: Param) -> SignalProducer<Project, ErrorEnvelope> {
     if let error = self.fetchProjectError {
       return SignalProducer(error: error)
     }
@@ -810,7 +807,7 @@ internal struct MockService: ServiceType {
     )
   }
 
-  internal func fetchProject(_ params: DiscoveryParams) -> SignalProducer<DiscoveryEnvelope, ErrorEnvelope> {
+  public func fetchProject(_ params: DiscoveryParams) -> SignalProducer<DiscoveryEnvelope, ErrorEnvelope> {
     if let envelope = self.fetchDiscoveryResponse {
       return SignalProducer(value: envelope)
     }
@@ -821,14 +818,14 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: envelope)
   }
 
-  internal func fetchProject(project: Project) -> SignalProducer<Project, ErrorEnvelope> {
+  public func fetchProject(project: Project) -> SignalProducer<Project, ErrorEnvelope> {
     if let project = self.fetchProjectResponse {
       return SignalProducer(value: project)
     }
     return SignalProducer(value: project)
   }
 
-  internal func fetchProjectActivities(forProject project: Project) ->
+  public func fetchProjectActivities(forProject project: Project) ->
     SignalProducer<ProjectActivityEnvelope, ErrorEnvelope> {
 
     if let error = fetchProjectActivitiesError {
@@ -848,7 +845,7 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  internal func fetchProjectActivities(paginationUrl: String)
+  public func fetchProjectActivities(paginationUrl: String)
     -> SignalProducer<ProjectActivityEnvelope, ErrorEnvelope> {
 
     if let error = fetchProjectActivitiesError {
@@ -868,7 +865,7 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  internal func fetchProjects(member: Bool) -> SignalProducer<ProjectsEnvelope, ErrorEnvelope> {
+  public func fetchProjects(member: Bool) -> SignalProducer<ProjectsEnvelope, ErrorEnvelope> {
 
     if let error = fetchProjectsError {
       return SignalProducer(error: error)
@@ -887,12 +884,12 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  internal func fetchProjects(paginationUrl: String) ->
+  public func fetchProjects(paginationUrl: String) ->
     SignalProducer<ProjectsEnvelope, ErrorEnvelope> {
       return fetchProjects(member: true)
   }
 
-  internal func fetchProjectStats(projectId: Int) ->
+  public func fetchProjectStats(projectId: Int) ->
     SignalProducer<ProjectStatsEnvelope, ErrorEnvelope> {
       if let error = fetchProjectStatsError {
         return SignalProducer(error: error)
@@ -903,7 +900,7 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: .template)
   }
 
-  internal func fetchRewardShippingRules(projectId: Int, rewardId: Int)
+  public func fetchRewardShippingRules(projectId: Int, rewardId: Int)
     -> SignalProducer<ShippingRulesEnvelope, ErrorEnvelope> {
 
       if let error = self.fetchShippingRulesResult?.error {
@@ -913,7 +910,7 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: .init(shippingRules: self.fetchShippingRulesResult?.value ?? [.template]))
   }
 
-  internal func fetchUserProjectsBacked() -> SignalProducer<ProjectsEnvelope, ErrorEnvelope> {
+  public func fetchUserProjectsBacked() -> SignalProducer<ProjectsEnvelope, ErrorEnvelope> {
     if let error = fetchUserProjectsBackedError {
       return SignalProducer(error: error)
     } else if let projects = fetchUserProjectsBackedResponse {
@@ -931,7 +928,7 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  internal func fetchUserProjectsBacked(paginationUrl url: String)
+  public func fetchUserProjectsBacked(paginationUrl url: String)
     -> SignalProducer<ProjectsEnvelope, ErrorEnvelope> {
 
     if let error = fetchUserProjectsBackedError {
@@ -951,7 +948,7 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  internal func fetchUserSelf() -> SignalProducer<User, ErrorEnvelope> {
+  public func fetchUserSelf() -> SignalProducer<User, ErrorEnvelope> {
     if let error = fetchUserSelfError {
       return SignalProducer(error: error)
     }
@@ -959,7 +956,7 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: self.fetchUserSelfResponse ?? .template)
   }
 
-  internal func fetchSurveyResponse(surveyResponseId id: Int)
+  public func fetchSurveyResponse(surveyResponseId id: Int)
     -> SignalProducer<SurveyResponse, ErrorEnvelope> {
     if let response = fetchSurveyResponseResponse {
       return SignalProducer(value: response)
@@ -969,25 +966,25 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: .template |> SurveyResponse.lens.id .~ id)
   }
 
-  internal func fetchUnansweredSurveyResponses() -> SignalProducer<[SurveyResponse], ErrorEnvelope> {
+  public func fetchUnansweredSurveyResponses() -> SignalProducer<[SurveyResponse], ErrorEnvelope> {
     return SignalProducer(value: self.fetchUnansweredSurveyResponsesResponse)
   }
 
-  internal func fetchUser(userId: Int) -> SignalProducer<User, ErrorEnvelope> {
+  public func fetchUser(userId: Int) -> SignalProducer<User, ErrorEnvelope> {
     if let error = self.fetchUserError {
       return SignalProducer(error: error)
     }
     return SignalProducer(value: self.fetchUserResponse ?? (.template |> \.id .~ userId))
   }
 
-  internal func fetchUser(_ user: User) -> SignalProducer<User, ErrorEnvelope> {
+  public func fetchUser(_ user: User) -> SignalProducer<User, ErrorEnvelope> {
     if let error = self.fetchUserError {
       return SignalProducer(error: error)
     }
     return SignalProducer(value: fetchUserResponse ?? user)
   }
 
-  internal func fetchCategory(param: Param)
+  public func fetchCategory(param: Param)
     -> SignalProducer<KsApi.Category, GraphError> {
     switch param {
     case let .id(id):
@@ -997,7 +994,7 @@ internal struct MockService: ServiceType {
       }
   }
 
-  internal func incrementVideoCompletion(forProject project: Project) ->
+  public func incrementVideoCompletion(forProject project: Project) ->
     SignalProducer<VoidEnvelope, ErrorEnvelope> {
       if let error = incrementVideoCompletionError {
         return .init(error: error)
@@ -1006,7 +1003,7 @@ internal struct MockService: ServiceType {
       }
   }
 
-  internal func incrementVideoStart(forProject project: Project) ->
+  public func incrementVideoStart(forProject project: Project) ->
     SignalProducer<VoidEnvelope, ErrorEnvelope> {
       if let error = incrementVideoStartError {
         return .init(error: error)
@@ -1015,7 +1012,7 @@ internal struct MockService: ServiceType {
       }
   }
 
-  internal func toggleStar(_ project: Project) -> SignalProducer<StarEnvelope, ErrorEnvelope> {
+  public func toggleStar(_ project: Project) -> SignalProducer<StarEnvelope, ErrorEnvelope> {
    if let error = self.toggleStarError {
         return SignalProducer(error: error)
       } else if let toggleStar = self.toggleStarResponse {
@@ -1025,12 +1022,12 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: .template)
   }
 
-  internal func star(_ project: Project) -> SignalProducer<StarEnvelope, ErrorEnvelope> {
+  public func star(_ project: Project) -> SignalProducer<StarEnvelope, ErrorEnvelope> {
     let project = project |> Project.lens.personalization.isStarred .~ true
     return .init(value: .template |> StarEnvelope.lens.project .~ project)
   }
 
-  internal func login(email: String, password: String, code: String?) ->
+  public func login(email: String, password: String, code: String?) ->
     SignalProducer<AccessTokenEnvelope, ErrorEnvelope> {
 
     if let error = loginError {
@@ -1046,7 +1043,7 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: AccessTokenEnvelope(accessToken: "deadbeef", user: .template))
   }
 
-  internal func login(facebookAccessToken: String, code: String?) ->
+  public func login(facebookAccessToken: String, code: String?) ->
     SignalProducer<AccessTokenEnvelope, ErrorEnvelope> {
 
     if let error = loginError {
@@ -1062,12 +1059,12 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: AccessTokenEnvelope(accessToken: "deadbeef", user: .template))
   }
 
-  internal func markAsRead(messageThread: MessageThread)
+  public func markAsRead(messageThread: MessageThread)
     -> SignalProducer<MessageThread, ErrorEnvelope> {
       return SignalProducer(value: messageThread)
   }
 
-  internal func postComment(_ body: String, toProject project: Project) ->
+  public func postComment(_ body: String, toProject project: Project) ->
     SignalProducer<Comment, ErrorEnvelope> {
 
     if let error = self.postCommentError {
@@ -1078,7 +1075,7 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  func postComment(_ body: String, toUpdate update: Update) -> SignalProducer<Comment, ErrorEnvelope> {
+  public func postComment(_ body: String, toUpdate update: Update) -> SignalProducer<Comment, ErrorEnvelope> {
 
     if let error = self.postCommentError {
       return SignalProducer(error: error)
@@ -1088,7 +1085,7 @@ internal struct MockService: ServiceType {
     return .empty
   }
 
-  func resetPassword(email: String) -> SignalProducer<User, ErrorEnvelope> {
+  public func resetPassword(email: String) -> SignalProducer<User, ErrorEnvelope> {
     if let response = resetPasswordResponse {
       return SignalProducer(value: response)
     } else if let error = resetPasswordError {
@@ -1097,11 +1094,11 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: .template)
   }
 
-  func register(pushToken: String) -> SignalProducer<VoidEnvelope, ErrorEnvelope> {
+  public func register(pushToken: String) -> SignalProducer<VoidEnvelope, ErrorEnvelope> {
     return SignalProducer(value: VoidEnvelope())
   }
 
-  func exportDataState() -> SignalProducer<ExportDataEnvelope, ErrorEnvelope> {
+  public func exportDataState() -> SignalProducer<ExportDataEnvelope, ErrorEnvelope> {
     if let response = fetchExportStateResponse {
       return SignalProducer(value: response)
     } else if let error = fetchExportStateError {
@@ -1110,7 +1107,7 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: .template)
   }
 
-  internal func searchMessages(query: String, project: Project?)
+  public func searchMessages(query: String, project: Project?)
     -> SignalProducer<MessageThreadsEnvelope, ErrorEnvelope> {
       return SignalProducer(value:
         MessageThreadsEnvelope(
@@ -1124,7 +1121,7 @@ internal struct MockService: ServiceType {
       )
   }
 
-  internal func sendMessage(body: String, toSubject subject: MessageSubject)
+  public func sendMessage(body: String, toSubject subject: MessageSubject)
     -> SignalProducer<Message, ErrorEnvelope> {
 
       return SignalProducer(
@@ -1134,7 +1131,7 @@ internal struct MockService: ServiceType {
       )
   }
 
-  internal func signup(name: String,
+  public func signup(name: String,
                        email: String,
                        password: String,
                        passwordConfirmation: String,
@@ -1154,7 +1151,7 @@ internal struct MockService: ServiceType {
     )
   }
 
-  internal func signup(facebookAccessToken: String, sendNewsletters: Bool) ->
+  public func signup(facebookAccessToken: String, sendNewsletters: Bool) ->
     SignalProducer<AccessTokenEnvelope, ErrorEnvelope> {
 
     if let error = signupError {
@@ -1170,7 +1167,7 @@ internal struct MockService: ServiceType {
     )
   }
 
-  func submitApplePay(checkoutUrl: String,
+  public func submitApplePay(checkoutUrl: String,
                       stripeToken: String,
                       paymentInstrumentName: String,
                       paymentNetwork: String,
@@ -1180,7 +1177,7 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: self.submitApplePayResponse)
   }
 
-  internal func updateProjectNotification(_ notification: ProjectNotification)
+  public func updateProjectNotification(_ notification: ProjectNotification)
     -> SignalProducer<ProjectNotification, ErrorEnvelope> {
       if let error = updateProjectNotificationError {
         return SignalProducer(error: error)
@@ -1188,27 +1185,27 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: notification)
   }
 
-  internal func updateUserSelf(_ user: User) -> SignalProducer<User, ErrorEnvelope> {
+  public func updateUserSelf(_ user: User) -> SignalProducer<User, ErrorEnvelope> {
     if let error = updateUserSelfError {
       return SignalProducer(error: error)
     }
     return SignalProducer(value: user)
   }
 
-  internal func fetchUpdate(updateId: Int, projectParam: Param)
+  public func fetchUpdate(updateId: Int, projectParam: Param)
     -> SignalProducer<Update, ErrorEnvelope> {
 
       return SignalProducer(value: self.fetchUpdateResponse |> Update.lens.id .~ updateId)
   }
 
-  internal func fetchUpdateDraft(forProject project: Project) -> SignalProducer<UpdateDraft, ErrorEnvelope> {
+  public func fetchUpdateDraft(forProject project: Project) -> SignalProducer<UpdateDraft, ErrorEnvelope> {
     if let error = self.fetchDraftError {
       return SignalProducer(error: error)
     }
     return SignalProducer(value: fetchDraftResponse ?? .template)
   }
 
-  internal func update(draft: UpdateDraft, title: String, body: String, isPublic: Bool)
+  public func update(draft: UpdateDraft, title: String, body: String, isPublic: Bool)
     -> SignalProducer<UpdateDraft, ErrorEnvelope> {
 
       if let error = self.updateDraftError {
@@ -1222,7 +1219,7 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: updatedDraft)
   }
 
-  internal func updatePledge(
+  public func updatePledge(
     project: Project,
     amount: Double,
     reward: Reward?,
@@ -1236,7 +1233,7 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: self.updatePledgeResult?.value ?? .template)
   }
 
-  internal func addImage(file fileURL: URL, toDraft draft: UpdateDraft)
+  public func addImage(file fileURL: URL, toDraft draft: UpdateDraft)
     -> SignalProducer<UpdateDraft.Image, ErrorEnvelope> {
 
       if let error = addAttachmentError {
@@ -1246,7 +1243,7 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: addAttachmentResponse ?? .template)
   }
 
-  internal func delete(image: UpdateDraft.Image, fromDraft draft: UpdateDraft)
+  public func delete(image: UpdateDraft.Image, fromDraft draft: UpdateDraft)
     -> SignalProducer<UpdateDraft.Image, ErrorEnvelope> {
 
       if let error = removeAttachmentError {
@@ -1256,13 +1253,13 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: removeAttachmentResponse ?? .template)
   }
 
-  internal func addVideo(file fileURL: URL, toDraft draft: UpdateDraft)
+  public func addVideo(file fileURL: URL, toDraft draft: UpdateDraft)
     -> SignalProducer<UpdateDraft.Video, ErrorEnvelope> {
 
       return .empty
   }
 
-  internal func changePaymentMethod(project: Project)
+  public func changePaymentMethod(project: Project)
     -> SignalProducer<ChangePaymentMethodEnvelope, ErrorEnvelope> {
 
       if let error = self.changePaymentMethodResult?.error {
@@ -1272,13 +1269,13 @@ internal struct MockService: ServiceType {
       return SignalProducer(value: self.changePaymentMethodResult?.value ?? .template)
   }
 
-  internal func delete(video: UpdateDraft.Video, fromDraft draft: UpdateDraft)
+  public func delete(video: UpdateDraft.Video, fromDraft draft: UpdateDraft)
     -> SignalProducer<UpdateDraft.Video, ErrorEnvelope> {
 
       return .empty
   }
 
-  internal func publish(draft: UpdateDraft) -> SignalProducer<Update, ErrorEnvelope> {
+  public func publish(draft: UpdateDraft) -> SignalProducer<Update, ErrorEnvelope> {
     if let error = publishUpdateError {
       return SignalProducer(error: error)
     }
@@ -1286,7 +1283,7 @@ internal struct MockService: ServiceType {
     return SignalProducer(value: fetchUpdateResponse)
   }
 
-  internal func previewUrl(forDraft draft: UpdateDraft) -> URL? {
+  public func previewUrl(forDraft draft: UpdateDraft) -> URL? {
     return URL(
       string: "https://\(Secrets.Api.Endpoint.production)/projects/\(draft.update.projectId)/updates/"
         + "\(draft.update.id)/preview"

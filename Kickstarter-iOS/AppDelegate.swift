@@ -52,9 +52,11 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
       }
     #endif
 
-    if CommandLine.arguments.contains("--uitesting") {
+    let mockEnvironment = ProcessInfo.processInfo.environment["MOCK_ENVIRONMENT"]
+
+    if CommandLine.arguments.contains("--uitesting") || mockEnvironment == "enable" {
       print("🔵 Resetting environment for UITesting...")
-      AppEnvironment.updateServerConfig(ServerConfig.config(for: EnvironmentType.staging))
+      AppEnvironment.pushEnvironment(Environment.uiTesting)
       AppEnvironment.logout()
       PushNotificationDialog.resetAllContexts()
 

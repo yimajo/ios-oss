@@ -3,7 +3,7 @@ import Prelude
 import ReactiveSwift
 import Result
 
-internal struct MockLiveStreamService: LiveStreamServiceProtocol {
+public struct MockLiveStreamService: LiveStreamServiceProtocol {
   private let chatMessagesAddedResult: Result<[LiveStreamChatMessage], LiveApiError>?
   private let greenRoomOffStatusResult: Result<[Bool], LiveApiError>?
   private let fetchEventResult: Result<LiveStreamEvent, LiveApiError>?
@@ -21,11 +21,11 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
   private let signInToFirebaseWithCustomTokenResult: Result<[String], LiveApiError>?
   private let subscribeToResult: Result<LiveStreamSubscribeEnvelope, LiveApiError>?
 
-  internal init() {
+  public init() {
     self.init(fetchEventResult: nil)
   }
 
-  internal init(chatMessagesAddedResult: Result<[LiveStreamChatMessage], LiveApiError>? = nil,
+  public init(chatMessagesAddedResult: Result<[LiveStreamChatMessage], LiveApiError>? = nil,
                 greenRoomOffStatusResult: Result<[Bool], LiveApiError>? = nil,
                 fetchEventResult: Result<LiveStreamEvent, LiveApiError>? = nil,
                 fetchEventsForProjectResult: Result<LiveStreamEventsEnvelope, LiveApiError>? = nil,
@@ -59,11 +59,11 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
     self.subscribeToResult = subscribeToResult
   }
 
-  internal func setup() {
+  public func setup() {
 
   }
 
-  internal func fetchEvent(eventId: Int, uid: Int?, liveAuthToken: String?) ->
+  public func fetchEvent(eventId: Int, uid: Int?, liveAuthToken: String?) ->
     SignalProducer<LiveStreamEvent, LiveApiError> {
       if let error = self.fetchEventResult?.error {
         return SignalProducer(error: error)
@@ -75,7 +75,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
       )
   }
 
-  internal func fetchEvents(forProjectId projectId: Int, uid: Int?) ->
+  public func fetchEvents(forProjectId projectId: Int, uid: Int?) ->
     SignalProducer<LiveStreamEventsEnvelope, LiveApiError> {
       if let error = self.fetchEventsForProjectResult?.error {
         return SignalProducer(error: error)
@@ -90,7 +90,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
       )
   }
 
-  internal func fetchEvents() -> SignalProducer<[LiveStreamEvent], LiveApiError> {
+  public func fetchEvents() -> SignalProducer<[LiveStreamEvent], LiveApiError> {
     if let error = self.fetchEventsResult?.error {
       return SignalProducer(error: error)
     }
@@ -100,7 +100,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
     )
   }
 
-  internal func subscribeTo(eventId: Int, uid: Int, isSubscribed: Bool) ->
+  public func subscribeTo(eventId: Int, uid: Int, isSubscribed: Bool) ->
     SignalProducer<LiveStreamSubscribeEnvelope, LiveApiError> {
 
       if let error = self.subscribeToResult?.error {
@@ -114,7 +114,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
 
   // MARK: Firebase
 
-  func chatMessagesAdded(withPath path: String, addedSince timeInterval: TimeInterval) ->
+  public func chatMessagesAdded(withPath path: String, addedSince timeInterval: TimeInterval) ->
     SignalProducer<LiveStreamChatMessage, LiveApiError> {
       if let error = self.chatMessagesAddedResult?.error {
         return SignalProducer(error: error)
@@ -125,7 +125,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
       )
   }
 
-  func initialChatMessages(withPath path: String, limitedToLast limit: UInt) ->
+  public func initialChatMessages(withPath path: String, limitedToLast limit: UInt) ->
     SignalProducer<[LiveStreamChatMessage], LiveApiError> {
       if let error = self.initialChatMessagesResult?.error {
         return SignalProducer(error: error)
@@ -136,7 +136,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
       )
   }
 
-  internal func greenRoomOffStatus(withPath path: String) -> SignalProducer<Bool, LiveApiError> {
+  public func greenRoomOffStatus(withPath path: String) -> SignalProducer<Bool, LiveApiError> {
     if let error = self.greenRoomOffStatusResult?.error {
       return SignalProducer(error: error)
     }
@@ -146,7 +146,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
     )
   }
 
-  internal func hlsUrl(withPath path: String) -> SignalProducer<String, LiveApiError> {
+  public func hlsUrl(withPath path: String) -> SignalProducer<String, LiveApiError> {
     if let error = self.hlsUrlResult?.error {
       return SignalProducer(error: error)
     }
@@ -156,7 +156,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
     )
   }
 
-  internal func numberOfPeopleWatching(withPath path: String) -> SignalProducer<Int, LiveApiError> {
+  public func numberOfPeopleWatching(withPath path: String) -> SignalProducer<Int, LiveApiError> {
     if let error = self.numberOfPeopleWatchingResult?.error {
       return SignalProducer(error: error)
     }
@@ -170,7 +170,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
     )
   }
 
-  internal func incrementNumberOfPeopleWatching(withPath path: String) ->
+  public func incrementNumberOfPeopleWatching(withPath path: String) ->
     SignalProducer<(), LiveApiError> {
       if let error = self.incrementNumberOfPeopleWatchingResult?.error {
         return SignalProducer(error: error)
@@ -181,7 +181,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
       )
   }
 
-  internal func scaleNumberOfPeopleWatching(withPath path: String) -> SignalProducer<Int, LiveApiError> {
+  public func scaleNumberOfPeopleWatching(withPath path: String) -> SignalProducer<Int, LiveApiError> {
     if let error = self.scaleNumberOfPeopleWatchingResult?.error {
       return SignalProducer(error: error)
     }
@@ -195,7 +195,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
     )
   }
 
-  internal func sendChatMessage(withPath path: String, chatMessage message: NewLiveStreamChatMessageProtocol)
+  public func sendChatMessage(withPath path: String, chatMessage message: NewLiveStreamChatMessageProtocol)
     -> SignalProducer<(), LiveApiError> {
       if let error = self.sendChatMessageResult?.error {
         return SignalProducer(error: error)
@@ -206,7 +206,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
       )
   }
 
-  internal func signInToFirebaseAnonymously() -> SignalProducer<String, LiveApiError> {
+  public func signInToFirebaseAnonymously() -> SignalProducer<String, LiveApiError> {
     if let error = self.signInToFirebaseAnonymouslyResult?.error {
       return SignalProducer(error: error)
     }
@@ -216,7 +216,7 @@ internal struct MockLiveStreamService: LiveStreamServiceProtocol {
     )
   }
 
-  internal func signInToFirebase(withCustomToken customToken: String) ->
+  public func signInToFirebase(withCustomToken customToken: String) ->
     SignalProducer<String, LiveApiError> {
       if let error = self.signInToFirebaseWithCustomTokenResult?.error {
         return SignalProducer(error: error)

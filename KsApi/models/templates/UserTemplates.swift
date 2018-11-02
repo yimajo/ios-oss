@@ -19,6 +19,21 @@ extension User {
     stats: .template
   )
 
+  internal static let fullTemplate = User(avatar: .template,
+                                          facebookConnected: false,
+                                          id: 1,
+                                          isFriend: nil,
+                                          liveAuthToken: "deadbeef",
+                                          location: Location.template,
+                                          name: "Blobbo",
+                                          needsFreshFacebookToken: false,
+                                          newsletters: .template,
+                                          notifications: .template,
+                                          optedOutOfRecommendations: false,
+                                          showPublicProfile: true,
+                                          social: true,
+                                          stats: .fullTemplate)
+
   internal static let brando = User.template
     |> \.avatar.large .~ "https://ksr-ugc.imgix.net/assets/006/258/518/b9033f46095b83119188cf9a66d19356_original.jpg?w=160&h=160&fit=crop&v=1461376829&auto=format&q=92&s=8d7666f01ab6765c3cf09149751ff077"
     |> \.avatar.medium .~ "https://ksr-ugc.imgix.net/assets/006/258/518/b9033f46095b83119188cf9a66d19356_original.jpg?w=40&h=40&fit=crop&v=1461376829&auto=format&q=92&s=0fcedf8888ca6990408ccde81888899b"

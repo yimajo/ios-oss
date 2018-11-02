@@ -1,15 +1,8 @@
 import XCTest
 
-class LoginSignupUITests: XCTestCase {
-  var app: XCUIApplication!
-
+final class LoginSignupUITests: UITestCase {
   override func setUp() {
-    continueAfterFailure = false
-
-    app = XCUIApplication()
-    app.launchArguments.append("--uitesting")
-
-    app.launch()
+    super.setUp()
   }
 
   func testCreateAccount() {
@@ -23,22 +16,26 @@ class LoginSignupUITests: XCTestCase {
     nameTextField.tap()
     nameTextField.typeText("Bobba")
     emailTextField.tap()
-    let randomUniqueValue = Int(Date().timeIntervalSince1970)
-    emailTextField.typeText("mobile-app-test-\(randomUniqueValue)@gmail.com")
+    emailTextField.typeText("test@kickstarter.com")
     passwordTextField.tap()
-    passwordTextField.typeText("password!")
+    passwordTextField.typeText("123456")
 
     let newsletterSwitch = app.switches["Newsletter switch"]
     newsletterSwitch.tap()
 
     app.buttons["Sign up"].tap()
+
+
+    let profile = app.navigationBars["Profile"]
+
+    XCTAssertTrue(profile.waitForExistence(timeout: 1.0), "Error logging in, Profile VC does not exist")
   }
 
   func testLogin() {
     app.switchToTab(tab: .profile(loggedIn: false))
     app.findButton(identifier: "Log in with email")?.tap()
 
-    app.textFields["Email address"].typeText("mobile-app-test@gmail.com")
+    app.textFields["Email address"].typeText("test@kickstarter.com")
 
     let passwordField = app.secureTextFields["Password"]
     passwordField.tap()
@@ -61,9 +58,5 @@ class LoginSignupUITests: XCTestCase {
     let profile = app.navigationBars["Profile"]
 
     XCTAssertTrue(profile.waitForExistence(timeout: 1.0), "Error logging in, Profile VC does not exist")
-  }
-
-  override func tearDown() {
-      // Put teardown code here. This method is called after the invocation of each test method in the class.
   }
 }
