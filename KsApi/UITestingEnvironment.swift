@@ -6,6 +6,7 @@ public struct UITestingEnvironment {
   }()
 
   public static let config: Config = Config.template
+  public static let countryCode: String = "US"
 
   public static var calendar: Calendar = {
     var calendar = Calendar(identifier: .gregorian)
@@ -13,4 +14,6 @@ public struct UITestingEnvironment {
 
     return calendar
   }()
+
+  public static let locale = Locale(identifier: "en_US")
 }

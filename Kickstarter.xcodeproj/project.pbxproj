@@ -129,7 +129,7 @@
 		77107643218C9F8600CBD5E0 /* UITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77107642218C9F8600CBD5E0 /* UITestCase.swift */; };
 		7710767D218CA2E500CBD5E0 /* MockBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ED1F451E831BA200BFFA01 /* MockBundle.swift */; };
 		77107684218CB06F00CBD5E0 /* Environment+UITesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710767E218CAE7500CBD5E0 /* Environment+UITesting.swift */; };
-		77107686218CD49700CBD5E0 /* UITestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77107685218CD49700CBD5E0 /* UITestService.swift */; };
+		77107686218CD49700CBD5E0 /* UITestingEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77107685218CD49700CBD5E0 /* UITestingEnvironment.swift */; };
 		77166998210A4BA5007A64A4 /* SettingsNotificationCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77166997210A4BA5007A64A4 /* SettingsNotificationCellViewModelTests.swift */; };
 		771669D0210B93BE007A64A4 /* SettingsNotificationsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771669CF210B93BE007A64A4 /* SettingsNotificationsDataSourceTests.swift */; };
 		77216CE220EFE7F70061BE82 /* FacebookConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77216CAB20EFE7F70061BE82 /* FacebookConnectionType.swift */; };
@@ -1861,7 +1861,7 @@
 		770E46242114E15D00396D46 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Frameworks/Fabric/Fabric.framework; sourceTree = "<group>"; };
 		77107642218C9F8600CBD5E0 /* UITestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestCase.swift; sourceTree = "<group>"; };
 		7710767E218CAE7500CBD5E0 /* Environment+UITesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+UITesting.swift"; sourceTree = "<group>"; };
-		77107685218CD49700CBD5E0 /* UITestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestService.swift; sourceTree = "<group>"; };
+		77107685218CD49700CBD5E0 /* UITestingEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingEnvironment.swift; sourceTree = "<group>"; };
 		77166997210A4BA5007A64A4 /* SettingsNotificationCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotificationCellViewModelTests.swift; sourceTree = "<group>"; };
 		771669CF210B93BE007A64A4 /* SettingsNotificationsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotificationsDataSourceTests.swift; sourceTree = "<group>"; };
 		77216CAB20EFE7F70061BE82 /* FacebookConnectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookConnectionType.swift; sourceTree = "<group>"; };
@@ -4124,7 +4124,7 @@
 				D67F29351F68333800E399A6 /* GraphSchema.swift */,
 				D6C9A20D1F755FE200981E64 /* GraphSchemaTests.swift */,
 				775DFA9C215E758400620CED /* GraphMutation.swift */,
-				77107685218CD49700CBD5E0 /* UITestService.swift */,
+				77107685218CD49700CBD5E0 /* UITestingEnvironment.swift */,
 				D01587761EEB2ED6006E7684 /* MockService.swift */,
 				D01588261EEB2ED7006E7684 /* ServerConfig.swift */,
 				D01588271EEB2ED7006E7684 /* Service.swift */,
@@ -6356,7 +6356,7 @@
 				D0158A121EEB30A2006E7684 /* CreatePledgeEnvelopeTemplates.swift in Sources */,
 				D015888D1EEB2ED7006E7684 /* ConfigLenses.swift in Sources */,
 				D0158A1E1EEB30A2006E7684 /* ProjectStatsEnvelope.FundingDateStatsTemplates.swift in Sources */,
-				77107686218CD49700CBD5E0 /* UITestService.swift in Sources */,
+				77107686218CD49700CBD5E0 /* UITestingEnvironment.swift in Sources */,
 				D015899B1EEB2ED7006E7684 /* Service.swift in Sources */,
 				D6ED1B39216D50BE007F7547 /* GraphUser.swift in Sources */,
 				D01588731EEB2ED7006E7684 /* FindFriendsEnvelope.swift in Sources */,
