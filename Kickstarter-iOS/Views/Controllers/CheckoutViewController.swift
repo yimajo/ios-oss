@@ -7,7 +7,7 @@ import SafariServices
 import Stripe
 import UIKit
 
-internal final class CheckoutViewController: DeprecatedWebViewController {
+internal final class CheckoutViewController: WebViewController {
   fileprivate weak var loginToutViewController: UIViewController?
   fileprivate let viewModel: CheckoutViewModelType = CheckoutViewModel()
   private var sessionStartedObserver: Any?
@@ -52,7 +52,7 @@ internal final class CheckoutViewController: DeprecatedWebViewController {
     self.viewModel.outputs.evaluateJavascript
       .observeForControllerAction()
       .observeValues { [weak self] js in
-        _ = self?.webView.stringByEvaluatingJavaScript(from: js)
+        _ = self?.webView.evaluateJavaScript(js, completionHandler: nil)
     }
 
     self.viewModel.outputs.setStripePublishableKey
@@ -95,7 +95,7 @@ internal final class CheckoutViewController: DeprecatedWebViewController {
     self.viewModel.outputs.webViewLoadRequest
       .observeForControllerAction()
       .observeValues { [weak self] request in
-        self?.webView.loadRequest(request)
+        self?.webView.load(request)
     }
 
     self.viewModel.outputs.goToPaymentAuthorization
