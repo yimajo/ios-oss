@@ -39,7 +39,6 @@ internal class WebViewController: UIViewController {
 }
 
 extension WebViewController: WKUIDelegate {
-
 }
 
 extension WebViewController: WKNavigationDelegate {

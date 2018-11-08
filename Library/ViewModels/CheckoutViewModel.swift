@@ -6,6 +6,7 @@ import Prelude
 import ReactiveSwift
 import ReactiveExtensions
 import Result
+import WebKit
 
 public protocol CheckoutViewModelInputs {
   /// Call when the back button is tapped.
@@ -16,6 +17,10 @@ public protocol CheckoutViewModelInputs {
                      project: Project,
                      reward: Reward,
                      applePayCapable: Bool)
+
+  /// Call with the navigation action given to the webview's delegate method. Returns the policy that can
+  /// be returned from the delegate method.
+  func decidePolicy(forNavigationAction action: WKNavigationActionData) -> WKNavigationActionPolicy
 
   /// Call when the failure alert OK button is tapped.
   func failureAlertButtonTapped()
@@ -28,9 +33,6 @@ public protocol CheckoutViewModelInputs {
 
   /// Call from the payment authorization delegate method.
   func paymentAuthorizationWillAuthorizePayment()
-
-  /// Call when the webview decides whether to load a request.
-  func shouldStartLoad(withRequest request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool
 
   /// Call from the Stripe callback method once a stripe token has been created.
   func stripeCreatedToken(stripeToken: String?, error: Error?) -> PKPaymentAuthorizationStatus
@@ -102,8 +104,9 @@ public final class CheckoutViewModel: CheckoutViewModelType {
     let initialRequest = configData.map { $0.initialRequest }
     let project = configData.map { $0.project }
 
-    let requestData = self.shouldStartLoadProperty.signal.skipNil()
-      .map { request, navigationType -> RequestData in
+    let requestData = self.navigationAction.signal.skipNil()
+      .map { action -> RequestData in
+        let request = action.request
         let navigation = Navigation.match(request)
 
         let shouldStartLoad = isLoadableByWebView(request: request, navigation: navigation)
@@ -111,7 +114,7 @@ public final class CheckoutViewModel: CheckoutViewModelType {
         return RequestData(request: request,
           navigation: navigation,
           shouldStartLoad: shouldStartLoad,
-          webViewNavigationType: navigationType)
+          webViewNavigationType: action.navigationType)
     }
 
     let projectRequest = requestData
@@ -122,6 +125,11 @@ public final class CheckoutViewModel: CheckoutViewModelType {
       }
       .ignoreValues()
 
+    let navigationAction = self.navigationAction.signal.skipNil()
+
+    self.decidedPolicy <~ navigationAction
+      .map { $0.navigationType == .other ? .allow : .cancel }
+
     let webViewRequest = requestData
       .filter { requestData in
         // Allow through requests that the web view can load once they're prepared.
@@ -130,7 +138,7 @@ public final class CheckoutViewModel: CheckoutViewModelType {
       .map { $0.request }
 
     self.goToPaymentAuthorization = requestData
-      .filter { $0.webViewNavigationType == .linkClicked }
+      .filter { $0.webViewNavigationType == .linkActivated }
       .map { requestData -> String? in
         guard case let (.checkout(_, .payments(.applePay(payload))))? = requestData.navigation else {
           return nil
@@ -215,9 +223,6 @@ public final class CheckoutViewModel: CheckoutViewModelType {
         .ignoreValues(),
       projectRequest
     )
-
-    self.shouldStartLoadResponseProperty <~ requestData
-      .map { $0.shouldStartLoad }
 
     self.webViewLoadRequest = Signal.combineLatest(
       Signal.merge(initialRequest, retryAfterSessionStartedRequest, webViewRequest),
@@ -358,12 +363,12 @@ public final class CheckoutViewModel: CheckoutViewModelType {
     self.paymentAuthorizationWillAuthorizeProperty.value = ()
   }
 
-  fileprivate let shouldStartLoadProperty = MutableProperty<(URLRequest, UIWebView.NavigationType)?>(nil)
-  fileprivate let shouldStartLoadResponseProperty = MutableProperty(false)
-  public func shouldStartLoad(withRequest request: URLRequest,
-                              navigationType: UIWebView.NavigationType) -> Bool {
-    self.shouldStartLoadProperty.value = (request, navigationType)
-    return self.shouldStartLoadResponseProperty.value
+  fileprivate let navigationAction = MutableProperty<WKNavigationActionData?>(nil)
+  fileprivate let decidedPolicy = MutableProperty(WKNavigationActionPolicy.cancel)
+  public func decidePolicy(forNavigationAction action: WKNavigationActionData) -> WKNavigationActionPolicy {
+
+    self.navigationAction.value = action
+    return self.decidedPolicy.value
   }
 
   fileprivate let stripeTokenAndErrorProperty = MutableProperty((String?.none, Error?.none))
@@ -491,5 +496,5 @@ private struct RequestData {
   fileprivate let request: URLRequest
   fileprivate let navigation: Navigation?
   fileprivate let shouldStartLoad: Bool
-  fileprivate let webViewNavigationType: UIWebView.NavigationType
+  fileprivate let webViewNavigationType: WKNavigationType
 }

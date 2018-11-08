@@ -65,7 +65,9 @@ internal final class CheckoutViewController: WebViewController {
 
     self.viewModel.outputs.goToSafariBrowser
       .observeForControllerAction()
-      .observeValues { [weak self] url in self?.goToSafariBrowser(url: url) }
+      .observeValues { [weak self] url in
+        self?.goToSafariBrowser(url: url)
+    }
 
     self.viewModel.outputs.goToThanks
       .observeForControllerAction()
@@ -78,7 +80,9 @@ internal final class CheckoutViewController: WebViewController {
 
     self.viewModel.outputs.goToWebModal
       .observeForControllerAction()
-      .observeValues { [weak self] request in self?.goToWebModal(request: request) }
+      .observeValues { [weak self] request in
+        self?.goToWebModal(request: request)
+    }
 
     self.viewModel.outputs.openLoginTout
       .observeForControllerAction()
@@ -114,10 +118,14 @@ internal final class CheckoutViewController: WebViewController {
     }
   }
 
-  internal func webView(_ webView: UIWebView,
-                        shouldStartLoadWith request: URLRequest,
-                        navigationType: UIWebView.NavigationType) -> Bool {
-    return self.viewModel.inputs.shouldStartLoad(withRequest: request, navigationType: navigationType)
+  func webView(_ webView: WKWebView,
+               decidePolicyFor navigationAction: WKNavigationAction,
+               decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    decisionHandler(
+      self.viewModel.inputs.decidePolicy(
+        forNavigationAction: WKNavigationActionData(navigationAction: navigationAction)
+      )
+    )
   }
 
   @objc fileprivate func cancelButtonTapped() {

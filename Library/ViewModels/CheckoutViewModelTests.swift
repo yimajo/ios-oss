@@ -71,7 +71,7 @@ final class CheckoutViewModelTests: TestCase {
                                  applePayCapable: false)
     self.vm.inputs.viewDidLoad()
 
-    XCTAssertTrue(self.vm.inputs.shouldStartLoad(withRequest: stripeRequest(), navigationType: .other))
+    XCTAssertTrue(self.vm.inputs.de(withRequest: stripeRequest(), navigationType: .other))
 
     // 1: Cancel button tapped
     self.popViewController.assertDidNotEmitValue()
